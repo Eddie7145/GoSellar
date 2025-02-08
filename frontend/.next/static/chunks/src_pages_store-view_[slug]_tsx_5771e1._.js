@@ -13,7 +13,7 @@
     "static/chunks/node_modules_@mui_material_fa91f0._.js",
     "static/chunks/node_modules_@mui_system_esm_634253._.js",
     "static/chunks/node_modules_lodash-es_ff7e50._.js",
-    "static/chunks/node_modules_9d97de._.js"
+    "static/chunks/node_modules_b84879._.js"
   ],
   "source": "entry"
 });

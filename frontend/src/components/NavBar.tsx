@@ -1,66 +1,58 @@
 import React, { useState } from "react";
-import { Button, Modal, TextField, Checkbox, FormControlLabel, Container, MenuItem, Grid, Menu, Box } from "@mui/material";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import { useRouter } from "next/router"; // Import useRouter
 import { useAuth } from "../contexts/AuthContext"; // Import useAuth
 
-// Login Validation Schema using Yup
-const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().min(6, "Too Short!").required("Required"),
-});
+import {
+  Button,
+  Modal,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  Container,
+  MenuItem,
+  Grid,
+  Menu,
+  Box,
+} from "@mui/material";
+import { Formik, Form, Field } from "formik";
 
-// SignUp Validation Schema using Yup
-const SignupSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string().email("Invalid email format").required("Email is required"),
-  phone: Yup.string().required("Phone is required"),
-  password: Yup.string().min(8, "Password must be at least 8 characters").required("Password is required"),
-  confirmPassword: Yup.string().oneOf([Yup.ref("password")], "Passwords must match").required("Confirm password is required"),
-  terms: Yup.bool().oneOf([true], "You must agree with terms and conditions"),
-  userType: Yup.string().required("User type is required"),
-  storeName: Yup.string().test("storeName", "Store name is required", function (value) {
-    const { userType } = this.parent; // Access the parent object
-    return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
-  }),
-  storeDescription: Yup.string().test("storeDescription", "Store description is required", function (value) {
-    const { userType } = this.parent; // Access the parent object
-    return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
-  }),
-});
+const NavBar = () => {
+  const { isAuthenticated, login, logout } = useAuth(); // Get authentication state and functions
+  const [openLogin, setOpenLogin] = useState(false); // State for login modal
+  const [openSignup, setOpenSignup] = useState(false); // State for signup modal
+  const [userType, setUserType] = useState(""); // State for user type
+  const [profileMenuAnchor, setProfileMenuAnchor] =
+    useState<null | HTMLElement>(null); // State for profile menu anchor
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 600,
-  bgcolor: "background.paper",
-  boxShadow: 15,
-  p: 4,
-};
-
-const NavBar: React.FC = () => {
-  const router = useRouter(); // Define router
-  const { isAuthenticated, login, logout } = useAuth(); // Use authentication context
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openSignup, setOpenSignup] = useState(false);
-  const [userType, setUserType] = useState("");
-  const [profileMenuAnchor, setProfileMenuAnchor] = useState<null | HTMLElement>(null);
-
-  const handleOpenLogin = () => setOpenLogin(true);
-  const handleCloseLogin = () => setOpenLogin(false);
-  const handleOpenSignup = () => setOpenSignup(true);
-  const handleCloseSignup = () => setOpenSignup(false);
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => setProfileMenuAnchor(event.currentTarget);
-  const handleProfileMenuClose = () => setProfileMenuAnchor(null);
+  const handleOpenLogin = () => setOpenLogin(true); // Function to open login modal
+  const handleCloseLogin = () => setOpenLogin(false); // Function to close login modal
+  const handleOpenSignup = () => setOpenSignup(true); // Function to open signup modal
+  const handleCloseSignup = () => setOpenSignup(false); // Function to close signup modal
+  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) =>
+    setProfileMenuAnchor(event.currentTarget); // Function to open profile menu
+  const handleProfileMenuClose = () => setProfileMenuAnchor(null); // Function to close profile menu
   const handleProfileNavigation = () => {
-    router.push("/store-view/[slug].tsx"); // Adjust the path as necessary for the profile page
+    // Logic for navigating to the profile page
+    handleProfileMenuClose();
   };
 
-  const handleLoginSubmit = async (values: { email: string; password: string; }) => {
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 600,
+    bgcolor: "background.paper",
+    boxShadow: 15,
+    p: 4,
+  };
+
+  const handleLoginSubmit = async (values: {
+    email: string;
+    password: string;
+  }) => {
     try {
+      console.log("Attempting login with:", values); // Debug log
+
       const response = await fetch("http://localhost:9000/api/user/login", {
         method: "POST",
         headers: {
@@ -69,18 +61,28 @@ const NavBar: React.FC = () => {
         body: JSON.stringify(values),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Login failed:", errorData);
-        throw new Error("Login failed");
-      }
+      console.log("Response status:", response.status); // Debug log
 
       const data = await response.json();
-      console.log("Login successful:", data);
-      alert("Login successful: " + JSON.stringify(data));
-      login(); // Update authentication state
+      console.log("Login response:", data); // Debug log
+
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      // Store the token in localStorage
+      localStorage.setItem("userToken", data.token);
+
+      // Update authentication state
+      login();
+
+      // Close the login modal
       handleCloseLogin();
+
+      // Optional: Show success message
+      alert("Login successful!");
     } catch (error) {
+      console.error("Login error:", error); // Debug log
       if (error instanceof Error) {
         alert("Error: " + error.message);
       } else {
@@ -101,6 +103,7 @@ const NavBar: React.FC = () => {
     storeDescription?: string;
   }) => {
     try {
+      console.log("Sending registration data:", values); // Log the data being sent
       const response = await fetch("http://localhost:9000/api/user/register", {
         method: "POST",
         headers: {
@@ -109,15 +112,20 @@ const NavBar: React.FC = () => {
         body: JSON.stringify(values),
       });
 
-      if (!response.ok) {
-        throw new Error("Registration failed");
-      }
+      console.log("Registration response status:", response.status); // Log the response status
 
       const data = await response.json();
+      console.log("Registration response data:", data); // Log the response data
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
       alert("Registration successful: " + JSON.stringify(data));
       handleCloseSignup();
-      handleOpenLogin(); // Open login modal after successful registration
+      handleOpenLogin();
     } catch (error) {
+      console.error("Registration error:", error); // Log any errors
       if (error instanceof Error) {
         alert("Error: " + error.message);
       } else {
@@ -127,7 +135,6 @@ const NavBar: React.FC = () => {
   };
 
   const handleLogout = () => {
-    // Clear user session and reset UI
     alert("Logged out successfully");
     logout(); // Reset authentication state
   };
@@ -179,7 +186,6 @@ const NavBar: React.FC = () => {
         <Box sx={style}>
           <Formik
             initialValues={{ email: "", password: "" }}
-            validationSchema={LoginSchema}
             onSubmit={handleLoginSubmit}
           >
             {({ handleSubmit }) => (
@@ -237,7 +243,6 @@ const NavBar: React.FC = () => {
               storeName: "",
               storeDescription: "",
             }}
-            validationSchema={SignupSchema}
             onSubmit={handleSignupSubmit}
           >
             {({ handleSubmit, setFieldValue }) => (

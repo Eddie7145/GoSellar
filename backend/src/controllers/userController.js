@@ -32,53 +32,76 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
     throw new AppError("User Already Exists", 400);
   }
 
-  // Hash the password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
-  // Create the user
-  const user = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-    phone,
-    role: userType === "farmer" ? "vendor" : "user",
-    storeName,
-    storeDescription,
-  });
-
-  if (user) {
-    res.status(201).json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
+  try {
+    // Create user - password will be hashed by pre-save middleware
+    const user = await User.create({
+      name,
+      email,
+      password, // Don't hash here - let the pre-save hook handle it
+      phone,
+      role: userType === "farmer" ? "vendor" : "user",
+      storeName,
+      storeDescription,
     });
-  } else {
-    throw new AppError("Invalid User Details", 400);
+
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      });
+    } else {
+      throw new AppError("Invalid User Details", 400);
+    }
+  } catch (error) {
+    console.error("Registration error:", error);
+    throw new AppError(error.message || "Error creating user", 400);
   }
 });
 
 // @desc Login a user
 // @router /api/user/login
 // @access Public
-
 export const loginUser = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  
+  try {
+    const user = await User.findOne({ email });
+    console.log("Login attempt for:", email);
+    
+    if (!user) {
+      return res.status(401).json({
+        status: false,
+        message: "Invalid Email or Password"
+      });
+    }
 
-  // First we find if a user exists
-  const user = await User.findOne({ email });
-  if (user && (await user.comparePassword(password, user.password))) {
+    // Use the schema method for password comparison
+    const isPasswordValid = await user.comparePassword(password);
+    console.log("Password valid:", isPasswordValid);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        status: false,
+        message: "Invalid Email or Password"
+      });
+    }
+
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
       role: user.role,
-      token: generateToken(user._id), // Include JWT token for session management
+      token: generateToken(user._id),
     });
-
-  } else {
-    throw new AppError("Invalid Email or Password!");
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({
+      status: false,
+      message: "Server error during login",
+      error: error.message
+    });
   }
 });
 
