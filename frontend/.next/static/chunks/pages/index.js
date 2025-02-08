@@ -7,8 +7,8 @@ __turbopack_load_page_chunks__("/", [
   "static/chunks/node_modules_@mui_material_efb740._.js",
   "static/chunks/node_modules_@mui_system_esm_634253._.js",
   "static/chunks/node_modules_lodash-es_ff7e50._.js",
-  "static/chunks/node_modules_82961a._.js",
+  "static/chunks/node_modules_8a08de._.js",
   "static/chunks/node_modules_react-multi-carousel_lib_styles_0f788c.css",
   "static/chunks/src_pages_index_5771e1._.js",
-  "static/chunks/src_pages_index_c0cf28._.js"
+  "static/chunks/src_pages_index_235759._.js"
 ])
