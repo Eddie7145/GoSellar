@@ -1,7 +1,5 @@
 {
-  "pages": {
-    "/store-view/[slug]": []
-  },
+  "pages": {},
   "app": {},
   "appUsingSizeAdjust": false,
   "pagesUsingSizeAdjust": false

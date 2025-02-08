@@ -9,22 +9,40 @@ import { AppError } from "../middlewares/errorHandler.js";
 // @access Public
 
 export const registerUser = expressAsyncHandler(async (req, res) => {
-const { name, email, password, phone, userType, storeName, storeDescription } = req.body;
+  const { name, email, password, phone, userType, storeName, storeDescription } = req.body;
 
+  // Validate required fields
+  if (!name || !email || !password || !phone || !userType) {
+    throw new AppError("Missing required fields", 400);
+  }
 
-  // First we find if a user already exists
+  // Validate userType
+  if (userType !== "farmer" && userType !== "buyer") {
+    throw new AppError("Invalid user type", 400);
+  }
+
+  // Validate storeName and storeDescription for farmers
+  if (userType === "farmer" && (!storeName || !storeDescription)) {
+    throw new AppError("Store name and description are required for farmers", 400);
+  }
+
+  // Check if user already exists
   const userExist = await User.findOne({ email });
-  console.log(userExist);
-
   if (userExist) {
     throw new AppError("User Already Exists", 400);
   }
+
+  // Hash the password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Create the user
   const user = await User.create({
     name,
     email,
-    password,
+    password: hashedPassword,
     phone,
-    role: userType === "farmer" ? "vendor" : "user", // Set role based on userType
+    role: userType === "farmer" ? "vendor" : "user",
     storeName,
     storeDescription,
   });
@@ -56,8 +74,9 @@ export const loginUser = expressAsyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
-      token: generateToken(user._id),
+      token: generateToken(user._id), // Include JWT token for session management
     });
+
   } else {
     throw new AppError("Invalid Email or Password!");
   }

@@ -847,19 +847,21 @@ __turbopack_esm__({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/yup/index.esm.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [client] (ecmascript)"); // Import useRouter
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Box/Box.js [client] (ecmascript) <export default as Box>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Container/Container.js [client] (ecmascript) <export default as Container>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Typography/Typography.js [client] (ecmascript) <export default as Typography>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [client] (ecmascript) <export default as Button>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Menu/Menu.js [client] (ecmascript) <export default as Menu>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/MenuItem/MenuItem.js [client] (ecmascript) <export default as MenuItem>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Modal/Modal.js [client] (ecmascript) <export default as Modal>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/formik/dist/formik.esm.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Grid/Grid.js [client] (ecmascript) <export default as Grid>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/TextField/TextField.js [client] (ecmascript) <export default as TextField>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/MenuItem/MenuItem.js [client] (ecmascript) <export default as MenuItem>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$FormControlLabel$2f$FormControlLabel$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FormControlLabel$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/FormControlLabel/FormControlLabel.js [client] (ecmascript) <export default as FormControlLabel>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Checkbox$2f$Checkbox$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Checkbox$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Checkbox/Checkbox.js [client] (ecmascript) <export default as Checkbox>");
 ;
 var _s = __turbopack_refresh__.signature();
+;
 ;
 ;
 ;
@@ -901,19 +903,26 @@ const style = {
     boxShadow: 15,
     p: 4
 };
-// const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 const NavBar = ()=>{
     _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])(); // Define router
     const [openLogin, setOpenLogin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [openSignup, setOpenSignup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [userType, setUserType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [profileMenuAnchor, setProfileMenuAnchor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [isAuthenticated, setIsAuthenticated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false); // New state for authentication
     const handleOpenLogin = ()=>setOpenLogin(true);
     const handleCloseLogin = ()=>setOpenLogin(false);
     const handleOpenSignup = ()=>setOpenSignup(true);
     const handleCloseSignup = ()=>setOpenSignup(false);
+    const handleProfileMenuOpen = (event)=>setProfileMenuAnchor(event.currentTarget);
+    const handleProfileMenuClose = ()=>setProfileMenuAnchor(null);
+    const handleProfileNavigation = ()=>{
+        router.push("/store-view/[slug].tsx"); // Adjust the path as necessary for the profile page
+    };
     const handleLoginSubmit = async (values)=>{
         try {
-            const response = await fetch('http://localhost:9000/api/user/login', {
+            const response = await fetch("http://localhost:9000/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -928,6 +937,7 @@ const NavBar = ()=>{
             const data = await response.json();
             console.log("Login successful:", data);
             alert("Login successful: " + JSON.stringify(data));
+            setIsAuthenticated(true); // Update authentication state
             handleCloseLogin();
         } catch (error) {
             if (error instanceof Error) {
@@ -939,7 +949,7 @@ const NavBar = ()=>{
     };
     const handleSignupSubmit = async (values)=>{
         try {
-            const response = await fetch('http://localhost:9000/api/user/register', {
+            const response = await fetch("http://localhost:9000/api/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -952,6 +962,7 @@ const NavBar = ()=>{
             const data = await response.json();
             alert("Registration successful: " + JSON.stringify(data));
             handleCloseSignup();
+            handleOpenLogin(); // Open login modal after successful registration
         } catch (error) {
             if (error instanceof Error) {
                 alert("Error: " + error.message);
@@ -959,6 +970,11 @@ const NavBar = ()=>{
                 alert("An unknown error occurred");
             }
         }
+    };
+    const handleLogout = ()=>{
+        // Clear user session and reset UI
+        alert("Logged out successfully");
+        setIsAuthenticated(false); // Reset authentication state
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
         children: [
@@ -968,39 +984,82 @@ const NavBar = ()=>{
                     className: "flex flex-wrap items-center justify-between py-2 bg-white",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
                         className: "flex items-center",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
-                                onClick: handleOpenLogin,
-                                className: "cursor-pointer px-5 py-2 bg-slate-200 rounded-md text-[#00670c]",
-                                children: "Login"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/NavBar.tsx",
-                                lineNumber: 152,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
-                                onClick: handleOpenSignup,
-                                className: "ml-2 bg-[#00670c] text-white px-5 py-2",
-                                children: "Register"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/NavBar.tsx",
-                                lineNumber: 158,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                        children: isAuthenticated ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "http://placehold.co/50x50" // Placeholder for user profile image
+                                    ,
+                                    alt: "User Profile",
+                                    className: "w-8 h-8 rounded-full cursor-pointer",
+                                    onClick: handleProfileMenuOpen
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/NavBar.tsx",
+                                    lineNumber: 142,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
+                                    anchorEl: profileMenuAnchor,
+                                    open: Boolean(profileMenuAnchor),
+                                    onClose: handleProfileMenuClose,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
+                                            onClick: handleProfileNavigation,
+                                            children: "Profile"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/NavBar.tsx",
+                                            lineNumber: 153,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
+                                            onClick: handleLogout,
+                                            children: "Logout"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/NavBar.tsx",
+                                            lineNumber: 154,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/NavBar.tsx",
+                                    lineNumber: 148,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
+                                    onClick: handleOpenLogin,
+                                    className: "cursor-pointer px-5 py-2 bg-slate-200 rounded-md text-[#00670c]",
+                                    children: "Login"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/NavBar.tsx",
+                                    lineNumber: 159,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
+                                    onClick: handleOpenSignup,
+                                    className: "ml-2 bg-[#00670c] text-white px-5 py-2",
+                                    children: "Register"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/NavBar.tsx",
+                                    lineNumber: 165,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
                         fileName: "[project]/src/components/NavBar.tsx",
-                        lineNumber: 151,
+                        lineNumber: 139,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/NavBar.tsx",
-                    lineNumber: 150,
+                    lineNumber: 138,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/NavBar.tsx",
-                lineNumber: 149,
+                lineNumber: 137,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -1026,7 +1085,7 @@ const NavBar = ()=>{
                                                 children: "Login"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 188,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1034,13 +1093,13 @@ const NavBar = ()=>{
                                                 children: "Welcome back, Ready to rock and roll?"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 180,
+                                                lineNumber: 189,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 187,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1057,7 +1116,7 @@ const NavBar = ()=>{
                                                     variant: "outlined"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 195,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1069,18 +1128,18 @@ const NavBar = ()=>{
                                                     variant: "outlined"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 202,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 194,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 193,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -1089,28 +1148,28 @@ const NavBar = ()=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 204,
+                                        lineNumber: 213,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/NavBar.tsx",
-                                lineNumber: 177,
+                                lineNumber: 186,
                                 columnNumber: 15
                             }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/NavBar.tsx",
-                        lineNumber: 171,
+                        lineNumber: 180,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/NavBar.tsx",
-                    lineNumber: 170,
+                    lineNumber: 179,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/NavBar.tsx",
-                lineNumber: 169,
+                lineNumber: 178,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -1143,7 +1202,7 @@ const NavBar = ()=>{
                                                 children: "Register"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 237,
+                                                lineNumber: 246,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1151,13 +1210,13 @@ const NavBar = ()=>{
                                                 children: "Let's get you started right away"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 238,
+                                                lineNumber: 247,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 236,
+                                        lineNumber: 245,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1178,7 +1237,7 @@ const NavBar = ()=>{
                                                 children: "Farmer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 264,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
@@ -1186,13 +1245,13 @@ const NavBar = ()=>{
                                                 children: "Buyer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 256,
+                                                lineNumber: 265,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 242,
+                                        lineNumber: 251,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1205,12 +1264,12 @@ const NavBar = ()=>{
                                             variant: "outlined"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 259,
+                                            lineNumber: 268,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 258,
+                                        lineNumber: 267,
                                         columnNumber: 17
                                     }, this),
                                     userType === "farmer" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1224,7 +1283,7 @@ const NavBar = ()=>{
                                                 variant: "outlined"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 269,
+                                                lineNumber: 278,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1235,13 +1294,13 @@ const NavBar = ()=>{
                                                 variant: "outlined"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 276,
+                                                lineNumber: 285,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 268,
+                                        lineNumber: 277,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1261,7 +1320,7 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 288,
+                                                            lineNumber: 297,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1273,18 +1332,18 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 295,
+                                                            lineNumber: 304,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 287,
+                                                    lineNumber: 296,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 286,
+                                                lineNumber: 295,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1302,7 +1361,7 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 308,
+                                                            lineNumber: 317,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1314,24 +1373,24 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 316,
+                                                            lineNumber: 325,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 307,
+                                                    lineNumber: 316,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 306,
+                                                lineNumber: 315,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 294,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$FormControlLabel$2f$FormControlLabel$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FormControlLabel$3e$__["FormControlLabel"], {
@@ -1339,14 +1398,14 @@ const NavBar = ()=>{
                                             name: "terms"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 329,
+                                            lineNumber: 338,
                                             columnNumber: 28
                                         }, void 0),
                                         label: "I agree to the terms and conditions",
                                         className: "mt-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 328,
+                                        lineNumber: 337,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -1355,38 +1414,42 @@ const NavBar = ()=>{
                                         children: "Sign Up"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 333,
+                                        lineNumber: 342,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/NavBar.tsx",
-                                lineNumber: 235,
+                                lineNumber: 244,
                                 columnNumber: 15
                             }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/NavBar.tsx",
-                        lineNumber: 219,
+                        lineNumber: 228,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/NavBar.tsx",
-                    lineNumber: 218,
+                    lineNumber: 227,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/NavBar.tsx",
-                lineNumber: 217,
+                lineNumber: 226,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/NavBar.tsx",
-        lineNumber: 148,
+        lineNumber: 136,
         columnNumber: 5
     }, this);
 };
-_s(NavBar, "bsPH5AWp0mDxjLTn10ElF7XF0Qc=");
+_s(NavBar, "dXbkEgPb1JP/7IJvPHIcB+2PDTQ=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = NavBar;
 const __TURBOPACK__default__export__ = NavBar;
 var _c;
@@ -2347,6 +2410,7 @@ __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/Home/ProductCard.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Layout$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/Layout.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Box/Box.js [client] (ecmascript) <export default as Box>");
@@ -2355,10 +2419,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Rating$2f$Rating$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Rating$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Rating/Rating.js [client] (ecmascript) <export default as Rating>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [client] (ecmascript) <export default as Button>");
 ;
+var _s = __turbopack_refresh__.signature();
+;
 ;
 ;
 ;
 const StoreView = ()=>{
+    _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const handleProfileNavigation = ()=>{
+        router.push("/store-view/[slug]"); // Adjust the path as necessary for the profile page
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Layout$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
@@ -2372,12 +2443,12 @@ const StoreView = ()=>{
                             className: "absolute top-0 left-0 w-full h-[300px] object-cover"
                         }, void 0, false, {
                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                            lineNumber: 12,
+                            lineNumber: 19,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                        lineNumber: 11,
+                        lineNumber: 18,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2400,12 +2471,12 @@ const StoreView = ()=>{
                                                     alt: "Store Logo"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 23,
+                                                    lineNumber: 30,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                lineNumber: 22,
+                                                lineNumber: 29,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2416,7 +2487,7 @@ const StoreView = ()=>{
                                                         children: "Food Market"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                        lineNumber: 30,
+                                                        lineNumber: 37,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2427,7 +2498,7 @@ const StoreView = ()=>{
                                                                 value: 5
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                lineNumber: 32,
+                                                                lineNumber: 39,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2438,13 +2509,13 @@ const StoreView = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                lineNumber: 33,
+                                                                lineNumber: 40,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                        lineNumber: 31,
+                                                        lineNumber: 38,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2454,44 +2525,44 @@ const StoreView = ()=>{
                                                                 children: "1 Review"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                lineNumber: 36,
+                                                                lineNumber: 43,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 children: "."
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                lineNumber: 37,
+                                                                lineNumber: 44,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 children: "27 Orders"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                lineNumber: 38,
+                                                                lineNumber: 45,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                        lineNumber: 35,
+                                                        lineNumber: 42,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                lineNumber: 29,
+                                                lineNumber: 36,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 21,
+                                        lineNumber: 28,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                    lineNumber: 20,
+                                    lineNumber: 27,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -2505,25 +2576,25 @@ const StoreView = ()=>{
                                                 children: "100%"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                lineNumber: 45,
+                                                lineNumber: 52,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 children: "Product Review"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                lineNumber: 46,
+                                                lineNumber: 53,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 44,
+                                        lineNumber: 51,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 50,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -2537,44 +2608,45 @@ const StoreView = ()=>{
                                                 children: "6"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                lineNumber: 51,
+                                                lineNumber: 58,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 children: "Products"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                lineNumber: 52,
+                                                lineNumber: 59,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 50,
+                                        lineNumber: 57,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                    lineNumber: 49,
+                                    lineNumber: 56,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                     className: "p-4 bg-[#00670c] text-white hover:bg-[#389e44]",
-                                    children: "Upload Product"
+                                    onClick: handleProfileNavigation,
+                                    children: "View Profile"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                    lineNumber: 55,
+                                    lineNumber: 62,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                            lineNumber: 19,
+                            lineNumber: 26,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                        lineNumber: 18,
+                        lineNumber: 25,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2585,152 +2657,67 @@ const StoreView = ()=>{
                                 children: "Stores Product"
                             }, void 0, false, {
                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                lineNumber: 59,
+                                lineNumber: 68,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
                                 container: true,
                                 spacing: 3,
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
-                                        item: true,
-                                        xs: 2.3,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            imageUrl: "/images 2.png",
-                                            discount: "15%",
-                                            productName: "Basket of Pepper",
-                                            brand: "StarStar Shop",
-                                            originalPrice: "NGN50.00",
-                                            discountedPrice: "NGN37.00",
-                                            rating: 5,
-                                            reviewCount: 4
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 62,
-                                            columnNumber: 17
-                                        }, this)
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
+                                    item: true,
+                                    xs: 2.3,
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                        imageUrl: "/images 2.png",
+                                        discount: "15%",
+                                        productName: "Basket of Pepper",
+                                        brand: "StarStar Shop",
+                                        originalPrice: "NGN50.00",
+                                        discountedPrice: "NGN37.00",
+                                        rating: 5,
+                                        reviewCount: 4
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 61,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
-                                        item: true,
-                                        xs: 2.3,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            imageUrl: "/images 2.png",
-                                            discount: "15%",
-                                            productName: "Basket of Pepper",
-                                            brand: "StarStar Shop",
-                                            originalPrice: "NGN50.00",
-                                            discountedPrice: "NGN37.00",
-                                            rating: 5,
-                                            reviewCount: 4
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 74,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 73,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
-                                        item: true,
-                                        xs: 2.3,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            imageUrl: "/images 2.png",
-                                            discount: "15%",
-                                            productName: "Basket of Pepper",
-                                            brand: "StarStar Shop",
-                                            originalPrice: "NGN50.00",
-                                            discountedPrice: "NGN37.00",
-                                            rating: 5,
-                                            reviewCount: 4
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 86,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 85,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
-                                        item: true,
-                                        xs: 2.3,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            imageUrl: "/images 2.png",
-                                            discount: "15%",
-                                            productName: "Basket of Pepper",
-                                            brand: "StarStar Shop",
-                                            originalPrice: "NGN50.00",
-                                            discountedPrice: "NGN37.00",
-                                            rating: 5,
-                                            reviewCount: 4
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 98,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 97,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
-                                        item: true,
-                                        xs: 2.3,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Home$2f$ProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            imageUrl: "/images 2.png",
-                                            discount: "15%",
-                                            productName: "Basket of Pepper",
-                                            brand: "StarStar Shop",
-                                            originalPrice: "NGN50.00",
-                                            discountedPrice: "NGN37.00",
-                                            rating: 5,
-                                            reviewCount: 4
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 110,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 109,
-                                        columnNumber: 15
+                                        lineNumber: 71,
+                                        columnNumber: 17
                                     }, this)
-                                ]
-                            }, void 0, true, {
+                                }, void 0, false, {
+                                    fileName: "[project]/src/pages/store-view/[slug].tsx",
+                                    lineNumber: 70,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                lineNumber: 60,
+                                lineNumber: 69,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                        lineNumber: 58,
+                        lineNumber: 67,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                lineNumber: 10,
+                lineNumber: 17,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/pages/store-view/[slug].tsx",
-            lineNumber: 9,
+            lineNumber: 16,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/pages/store-view/[slug].tsx",
-        lineNumber: 8,
+        lineNumber: 15,
         columnNumber: 5
     }, this);
 };
+_s(StoreView, "fN7XvhJ+p5oE6+Xlo0NJmXpxjC8=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = StoreView;
 const __TURBOPACK__default__export__ = StoreView;
 var _c;

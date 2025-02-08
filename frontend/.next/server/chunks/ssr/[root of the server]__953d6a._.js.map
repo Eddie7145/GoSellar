@@ -1,5 +1,7 @@
 {
   "version": 3,
   "sources": [],
-  "sections": []
+  "sections": [
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Adindu%20Chizzy/Downloads/GoSellar/frontend/src/pages/_app.tsx"],"sourcesContent":["import '../styles/globals.css';\nimport type { AppProps } from 'next/app';\nimport { AuthProvider } from '../contexts/AuthContext'; // Import AuthProvider\n\nexport default function App({ Component, pageProps }: AppProps) {\n  return (\n    <CartProvider>\n      <Component {...pageProps} />\n    </CartProvider>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAIe,SAAS,IAAI,EAAE,SAAS,EAAE,SAAS,EAAY;IAC5D,qBACE,qKAAC;kBACC,cAAA,qKAAC;YAAW,GAAG,SAAS;;;;;;;;;;;AAG9B"}},
+    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
 }

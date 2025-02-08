@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Modal,
-  Button,
-  TextField,
-  Checkbox,
-  FormControlLabel,
-  Container,
-  MenuItem,
-  Grid,
-} from "@mui/material";
+import { Button, Modal, TextField, Checkbox, FormControlLabel, Container, MenuItem, Grid, Menu, Box } from "@mui/material";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "next/router"; // Import useRouter
+import { useAuth } from "../contexts/AuthContext"; // Import useAuth
 
 // Login Validation Schema using Yup
 const LoginSchema = Yup.object().shape({
@@ -23,34 +14,20 @@ const LoginSchema = Yup.object().shape({
 // SignUp Validation Schema using Yup
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
+  email: Yup.string().email("Invalid email format").required("Email is required"),
   phone: Yup.string().required("Phone is required"),
-  password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Confirm password is required"),
+  password: Yup.string().min(8, "Password must be at least 8 characters").required("Password is required"),
+  confirmPassword: Yup.string().oneOf([Yup.ref("password")], "Passwords must match").required("Confirm password is required"),
   terms: Yup.bool().oneOf([true], "You must agree with terms and conditions"),
   userType: Yup.string().required("User type is required"),
-  storeName: Yup.string().test(
-    "storeName",
-    "Store name is required",
-    function (value) {
-      const { userType } = this.parent; // Access the parent object
-      return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
-    }
-  ),
-  storeDescription: Yup.string().test(
-    "storeDescription",
-    "Store description is required",
-    function (value) {
-      const { userType } = this.parent; // Access the parent object
-      return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
-    }
-  ),
+  storeName: Yup.string().test("storeName", "Store name is required", function (value) {
+    const { userType } = this.parent; // Access the parent object
+    return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
+  }),
+  storeDescription: Yup.string().test("storeDescription", "Store description is required", function (value) {
+    const { userType } = this.parent; // Access the parent object
+    return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
+  }),
 });
 
 const style = {
@@ -64,24 +41,27 @@ const style = {
   p: 4,
 };
 
-// const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-
 const NavBar: React.FC = () => {
+  const router = useRouter(); // Define router
+  const { isAuthenticated, login, logout } = useAuth(); // Use authentication context
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
   const [userType, setUserType] = useState("");
+  const [profileMenuAnchor, setProfileMenuAnchor] = useState<null | HTMLElement>(null);
 
   const handleOpenLogin = () => setOpenLogin(true);
   const handleCloseLogin = () => setOpenLogin(false);
   const handleOpenSignup = () => setOpenSignup(true);
   const handleCloseSignup = () => setOpenSignup(false);
+  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => setProfileMenuAnchor(event.currentTarget);
+  const handleProfileMenuClose = () => setProfileMenuAnchor(null);
+  const handleProfileNavigation = () => {
+    router.push("/store-view/[slug].tsx"); // Adjust the path as necessary for the profile page
+  };
 
-  const handleLoginSubmit = async (values: {
-    email: string;
-    password: string;
-  }) => {
+  const handleLoginSubmit = async (values: { email: string; password: string; }) => {
     try {
-      const response = await fetch('http://localhost:9000/api/user/login', {
+      const response = await fetch("http://localhost:9000/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,10 +74,11 @@ const NavBar: React.FC = () => {
         console.error("Login failed:", errorData);
         throw new Error("Login failed");
       }
-      
+
       const data = await response.json();
       console.log("Login successful:", data);
       alert("Login successful: " + JSON.stringify(data));
+      login(); // Update authentication state
       handleCloseLogin();
     } catch (error) {
       if (error instanceof Error) {
@@ -120,7 +101,7 @@ const NavBar: React.FC = () => {
     storeDescription?: string;
   }) => {
     try {
-      const response = await fetch('http://localhost:9000/api/user/register', {
+      const response = await fetch("http://localhost:9000/api/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -135,6 +116,7 @@ const NavBar: React.FC = () => {
       const data = await response.json();
       alert("Registration successful: " + JSON.stringify(data));
       handleCloseSignup();
+      handleOpenLogin(); // Open login modal after successful registration
     } catch (error) {
       if (error instanceof Error) {
         alert("Error: " + error.message);
@@ -144,23 +126,50 @@ const NavBar: React.FC = () => {
     }
   };
 
+  const handleLogout = () => {
+    // Clear user session and reset UI
+    alert("Logged out successfully");
+    logout(); // Reset authentication state
+  };
+
   return (
     <Box>
       <Container maxWidth={"xl"}>
         <Box className="flex flex-wrap items-center justify-between py-2 bg-white">
           <Box className="flex items-center">
-            <Typography
-              onClick={handleOpenLogin}
-              className="cursor-pointer px-5 py-2 bg-slate-200 rounded-md text-[#00670c]"
-            >
-              Login
-            </Typography>
-            <Button
-              onClick={handleOpenSignup}
-              className="ml-2 bg-[#00670c] text-white px-5 py-2"
-            >
-              Register
-            </Button>
+            {isAuthenticated ? ( // Conditional rendering based on authentication state
+              <>
+                <img
+                  src="http://placehold.co/50x50" // Placeholder for user profile image
+                  alt="User Profile"
+                  className="w-8 h-8 rounded-full cursor-pointer"
+                  onClick={handleProfileMenuOpen}
+                />
+                <Menu
+                  anchorEl={profileMenuAnchor}
+                  open={Boolean(profileMenuAnchor)}
+                  onClose={handleProfileMenuClose}
+                >
+                  <MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
+              </>
+            ) : (
+              <>
+                <Button
+                  onClick={handleOpenLogin}
+                  className="cursor-pointer px-5 py-2 bg-slate-200 rounded-md text-[#00670c]"
+                >
+                  Login
+                </Button>
+                <Button
+                  onClick={handleOpenSignup}
+                  className="ml-2 bg-[#00670c] text-white px-5 py-2"
+                >
+                  Register
+                </Button>
+              </>
+            )}
           </Box>
         </Box>
       </Container>

@@ -5,15 +5,15 @@
 (globalThis.TURBOPACK_CHUNK_LISTS = globalThis.TURBOPACK_CHUNK_LISTS || []).push({
   "path": "static/chunks/src_pages_index_5771e1._.js",
   "chunks": [
-    "static/chunks/[root of the server]__ef9965._.js",
-    "static/chunks/node_modules_next_dist_b8496e._.js",
+    "static/chunks/[root of the server]__0a85c9._.js",
+    "static/chunks/node_modules_next_3674a2._.js",
     "static/chunks/node_modules_react_1cad9b._.js",
     "static/chunks/node_modules_react-dom_cjs_react-dom_development_ab7e07.js",
     "static/chunks/node_modules_react-dom_f14d04._.js",
-    "static/chunks/node_modules_@mui_material_27883c._.js",
+    "static/chunks/node_modules_@mui_material_efb740._.js",
     "static/chunks/node_modules_@mui_system_esm_634253._.js",
     "static/chunks/node_modules_lodash-es_ff7e50._.js",
-    "static/chunks/node_modules_1bf1b1._.js",
+    "static/chunks/node_modules_82961a._.js",
     "static/chunks/node_modules_react-multi-carousel_lib_styles_0f788c.css"
   ],
   "source": "entry"
