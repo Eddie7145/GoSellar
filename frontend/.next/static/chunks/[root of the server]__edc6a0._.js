@@ -2292,7 +2292,7 @@ const UploadProduct = ()=>{
     const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])(); // Get the authenticated user
     const [images, setImages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const initialValues = {
-        productName: "",
+        name: "",
         price: "",
         description: "",
         images: [],
@@ -2304,7 +2304,7 @@ const UploadProduct = ()=>{
         formData.append("vendor", userID || ""); // Append vendor ID directly from user context
         console.log("userId", userID);
         console.log("FormData being sent:", {
-            productName: values.productName,
+            productName: values.name,
             price: values.price,
             description: values.description,
             vendor: values.vendor,
@@ -2316,7 +2316,7 @@ const UploadProduct = ()=>{
             formData.append("images", base64Image); // Append each image as a Base64 string
         }
         // Append other fields
-        formData.append("productName", values.productName);
+        formData.append("productName", values.name);
         formData.append("price", values.price);
         formData.append("description", values.description);
         try {
