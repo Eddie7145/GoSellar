@@ -10,18 +10,18 @@ export const createProduct = expressAsyncHandler(async (req, res) => {
     console.log("Request Body:", req.body); // Log the request body
     console.log("Request Files:", req.files); // Log the uploaded files
 
-    const { productName, price, description, vendor } = req.body;
+    const { name, price, description, vendor } = req.body;
     const images = req.files?.map((file) => file.path); // Get paths of uploaded images
 
     // Validate required fields
-    // if (!productName || !price || !description || !vendor) {
-    //   console.error("Missing required fields:", { productName, price, description, vendor });
-    //   throw new AppError("Missing required fields", 400);
-    // }
+    if (!name || !price || !description || !vendor) {
+      console.error("Missing required fields:", { name, price, description, vendor });
+      throw new AppError("Missing required fields", 400);
+    }
 
     // Create the product
     const newProduct = await Product.create({
-      name: productName,
+      name,
       price,
       description,
       vendor,
@@ -56,6 +56,8 @@ export const getProductsByVendor = async (req, res) => {
 
   try {
     const products = await Product.find({ vendor: vendorId });
+    console.log("Fetched products for vendor:", vendorId, products); // Log fetched products for debugging
+
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ message: "Error fetching products", error });

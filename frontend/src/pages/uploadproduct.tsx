@@ -12,7 +12,7 @@ import { useAuth } from "../contexts/AuthContext"; // Import useAuth
 import React, { useState } from "react";
 
 interface FormValues {
-  productName: string;
+  name: string;
   price: string;
   description: string;
   images: File[];
@@ -24,7 +24,7 @@ const UploadProduct: React.FC = () => {
   const [images, setImages] = useState<File[]>([]);
 
   const initialValues: FormValues = {
-    productName: "",
+    name: "",
     price: "",
     description: "",
     images: [],
@@ -38,7 +38,7 @@ const UploadProduct: React.FC = () => {
   
     console.log("userId", userID);
     console.log("FormData being sent:", {
-      productName: values.productName,
+      productName: values.name,
       price: values.price,
       description: values.description,
       vendor: values.vendor,
@@ -52,7 +52,7 @@ const UploadProduct: React.FC = () => {
     }
   
     // Append other fields
-    formData.append("productName", values.productName);
+    formData.append("productName", values.name);
     formData.append("price", values.price);
     formData.append("description", values.description);
   

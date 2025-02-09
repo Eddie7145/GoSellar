@@ -49,6 +49,10 @@ const productSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Brand",
     },
+    price: {
+      type: Number,
+      required: true,
+    },
     image: [String],
     variations: [productVariationSchema],
     ratingAverage: {
@@ -68,10 +72,5 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-productSchema.pre("save", async function(next){
-  this.slug = slugify(this.name.toLowerCase());
-  next();
-});
 
 export const Product = mongoose.model("Product", productSchema);
