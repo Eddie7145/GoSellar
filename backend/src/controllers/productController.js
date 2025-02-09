@@ -1,23 +1,41 @@
 import expressAsyncHandler from "express-async-handler";
 import { Product } from "../models/productModel.js";
 import { AppError } from "../middlewares/errorHandler.js";
+import multer from "multer";
+import cloudinary from "../config/cloudinary.js";
+// import { v2 as cloudinary } from "cloudinary"; // ✅ Import Cloudinary
+
+// Multer memory storage setup
+const storage = multer.memoryStorage();
+const upload = multer({ storage }).array("images", 5); // Allow up to 5 images
 
 // @desc Create a new product
 // @router /api/product/
 // @access Private
+// import expressAsyncHandler from "express-async-handler";
+// import { Product } from "../models/productModel.js";
+// import { AppError } from "../middlewares/errorHandler.js";
+// import multer from "multer";
+// import { v2 as cloudinary } from "cloudinary"; // ✅ Import Cloudinary
+
+// ✅ Define Multer Middleware (outside the handler)
+// const storage = multer.memoryStorage();
+// export const upload = multer({ storage }).array("images", 5); // Allow up to 5 images
+
+// ✅ Product Creation Handler
 export const createProduct = expressAsyncHandler(async (req, res) => {
   try {
-    console.log("Request Body:", req.body); // Log the request body
-    console.log("Request Files:", req.files); // Log the uploaded files
+    console.log("Request Body:", req.body);
+    console.log("Request Files:", req.files);
 
-    const { name, price, description, vendor } = req.body;
-    const images = req.files?.map((file) => file.path); // Get paths of uploaded images
+    const { name, price, description, vendor , images } = req.body;
 
-    // Validate required fields
-    if (!name || !price || !description || !vendor) {
-      console.error("Missing required fields:", { name, price, description, vendor });
-      throw new AppError("Missing required fields", 400);
-    }
+    // Upload images to Cloudinary
+    const uploadResponse = await cloudinary.uploader.upload(images, {
+      folder: "products",
+    });
+
+    console.log("Image URLs:",  uploadResponse.secure_url );
 
     // Create the product
     const newProduct = await Product.create({
@@ -25,7 +43,7 @@ export const createProduct = expressAsyncHandler(async (req, res) => {
       price,
       description,
       vendor,
-      image: images, // Save image paths in the database
+      image: uploadResponse.secure_url , // Save image URLs in the database
     });
 
     res.status(201).json({ status: true, data: newProduct });
@@ -52,7 +70,8 @@ export const getAllProducts = expressAsyncHandler(async (req, res) => {
 // @access Public
 export const getProductsByVendor = async (req, res) => {
   const { vendorId } = req.query;
-  if (!vendorId) return res.status(400).json({ message: "Vendor ID is required" });
+  if (!vendorId)
+    return res.status(400).json({ message: "Vendor ID is required" });
 
   try {
     const products = await Product.find({ vendor: vendorId });

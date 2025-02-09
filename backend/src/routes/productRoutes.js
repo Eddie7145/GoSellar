@@ -15,7 +15,8 @@ const productRouter = express.Router();
 const upload = multer({ dest: "uploads/" }); // Files will be stored in the "uploads" folder
 
 // Apply multer middleware to the createProduct route
-productRouter.post("/", upload.array("images"), createProduct);
+// productRouter.post("/", upload.array("images"), createProduct);
+productRouter.post("/", upload.array("images", 5), createProduct);
 
 productRouter.get("/all", getAllProducts);
 productRouter.get("/:slug", getAProductBySlug);

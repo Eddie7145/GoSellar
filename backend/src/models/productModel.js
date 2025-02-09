@@ -73,4 +73,11 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+productSchema.pre("save", function (next) {
+  if (!this.slug) {
+    this.slug = this.name.toLowerCase().replace(/ /g, "-");
+  }
+  next();
+})
+
 export const Product = mongoose.model("Product", productSchema);
