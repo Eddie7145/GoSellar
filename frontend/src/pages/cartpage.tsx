@@ -304,7 +304,7 @@ const CartPage = () => {
                         <p className="font-medium p-2 text-[17px]">NGN 4,600.00</p>
                     </div>
                 </Box>
-                <Button className="mt-10 w-full bg-[#00670c] py-5 text-white font-semibold">Checkout with Paystack</Button>
+                <Button className="mt-10 w-full bg-[#00670c] py-5 text-white font-semibold">Proceed to Checkout</Button>
               </Box>
             </Grid>
           </Grid>

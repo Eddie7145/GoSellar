@@ -112,31 +112,33 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$
 const AuthContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["createContext"])(undefined);
 const AuthProvider = ({ children })=>{
     const [isAuthenticated, setIsAuthenticated] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
-    const login = ()=>{
+    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(undefined); // Define user state
+    const login = (userData)=>{
         setIsAuthenticated(true);
-    // Store user data in local storage or session storage if needed
+        setUser(userData); // Store user data in context
     };
     const logout = ()=>{
         setIsAuthenticated(false);
-    // Clear user data from storage if needed
+        setUser(undefined); // Clear user data on logout
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(AuthContext.Provider, {
         value: {
             isAuthenticated,
             login,
-            logout
+            logout,
+            user
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/src/contexts/AuthContext.tsx",
-        lineNumber: 25,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 };
 const useAuth = ()=>{
     const context = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useContext"])(AuthContext);
     if (context === undefined) {
-        throw new Error('useAuth must be used within an AuthProvider');
+        throw new Error("useAuth must be used within an AuthProvider");
     }
     return context;
 };
@@ -286,32 +288,59 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 const StoreView = ()=>{
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [storeData, setStoreData] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null); // Define state for store data
+    const [storeProducts, setStoreProducts] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]); // Define state for store products
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true); // Define loading state
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null); // Define error state
+    const [userID, setUserID] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null); // Define state for user ID
+    const [showMore, setShowMore] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false); // State for toggling description visibility
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
         const fetchStoreData = async ()=>{
             try {
-                const response = await fetch(`http://localhost:9000/api/user/profile`); // Fetch user profile data
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+                const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
+                const response = await fetch(`http://localhost:9000/api/user/profile`, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
                 const data = await response.json();
                 setStoreData(data); // Set the store data
             } catch (error) {
-                setError(error instanceof Error ? error.message : 'An error occurred'); // Set error message
+                setError(error instanceof Error ? error.message : "An error occurred"); // Set error message
             } finally{
                 setLoading(false); // Set loading to false after fetch
             }
         };
         fetchStoreData();
     }, []);
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        const userId = localStorage.getItem("userId"); // Retrieve vendor ID
+        setUserID(userId); // Set the user ID in state
+    }, []);
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        const fetchStoreProducts = async ()=>{
+            if (!userID) return; // Skip if userID is not available
+            try {
+                const response = await fetch(`http://localhost:9000/api/product?vendorId=${userID}`); // Fetch user profile data/products?vendorId=67a7ad3a9258bf614b5c632b
+                const data = await response.json();
+                setStoreProducts(data); // Set the store products
+            } catch (error) {
+                setError(error instanceof Error ? error.message : "An error occurred"); // Set error message
+            } finally{
+                setLoading(false); // Set loading to false after fetch
+            }
+        };
+        fetchStoreProducts();
+    }, [
+        userID
+    ]); // Run this effect when userID changes
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(Layout, {
         children: [
             loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                 children: "Loading..."
             }, void 0, false, {
                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                lineNumber: 44,
+                lineNumber: 74,
                 columnNumber: 19
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -321,7 +350,7 @@ const StoreView = ()=>{
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                lineNumber: 45,
+                lineNumber: 75,
                 columnNumber: 17
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -336,12 +365,12 @@ const StoreView = ()=>{
                                 className: "absolute top-0 left-0 w-full h-[300px] object-cover"
                             }, void 0, false, {
                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                lineNumber: 49,
+                                lineNumber: 79,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                            lineNumber: 48,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -364,12 +393,12 @@ const StoreView = ()=>{
                                                         alt: "Store Logo"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                        lineNumber: 64,
+                                                        lineNumber: 90,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 63,
+                                                    lineNumber: 89,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -380,69 +409,69 @@ const StoreView = ()=>{
                                                             children: storeData?.name || "Food Market"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                            lineNumber: 71,
+                                                            lineNumber: 97,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center gap-3",
+                                                            className: "flex gap-3 items-center",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Rating$2f$Rating$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Rating$3e$__["Rating"], {
                                                                     readOnly: true,
                                                                     value: storeData?.rating || 5
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                    lineNumber: 75,
+                                                                    lineNumber: 99,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                                                     children: [
                                                                         "(",
-                                                                        storeData?.reviewCount || 2,
+                                                                        storeData?.productCount || 0,
                                                                         ")"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                    lineNumber: 76,
+                                                                    lineNumber: 100,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                            lineNumber: 74,
+                                                            lineNumber: 98,
                                                             columnNumber: 21
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                            className: "flex gap-3 items-center",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                                                children: [
-                                                                    storeData?.ordersCount || 27,
-                                                                    " Orders"
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                                lineNumber: 79,
-                                                                columnNumber: 23
-                                                            }, this)
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                                            className: "mt-2",
+                                                            children: storeData?.description?.slice(0, showMore ? undefined : 100) || "No description available."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                            lineNumber: 78,
+                                                            lineNumber: 102,
                                                             columnNumber: 21
+                                                        }, this),
+                                                        storeData?.description && storeData.description.length > 100 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
+                                                            onClick: ()=>setShowMore(!showMore),
+                                                            className: "text-blue-500",
+                                                            children: showMore ? "See Less" : "See More"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
+                                                            lineNumber: 104,
+                                                            columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 70,
+                                                    lineNumber: 96,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 62,
+                                            lineNumber: 88,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 61,
+                                        lineNumber: 87,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -453,28 +482,28 @@ const StoreView = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h5", {
                                                     className: "font-bold text-[30px] text-[#00670c]",
-                                                    children: storeData?.productReview || "100%"
+                                                    children: storeData?.rating || 5
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 86,
+                                                    lineNumber: 113,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                                    children: "Product Review"
+                                                    children: "Ratings"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 89,
+                                                    lineNumber: 114,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 85,
+                                            lineNumber: 112,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 111,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -488,25 +517,25 @@ const StoreView = ()=>{
                                                     children: storeData?.productCount || 6
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 119,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                                     children: "Products"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                                    lineNumber: 97,
+                                                    lineNumber: 120,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 93,
+                                            lineNumber: 118,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 117,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -515,18 +544,18 @@ const StoreView = ()=>{
                                         children: "Upload Product"
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 123,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                lineNumber: 56,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                            lineNumber: 55,
+                            lineNumber: 85,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -534,10 +563,10 @@ const StoreView = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
                                     className: "text-3xl font-bold mb-5",
-                                    children: "Stores Product"
+                                    children: "Store Products"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -546,51 +575,51 @@ const StoreView = ()=>{
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
                                         item: true,
                                         xs: 2.3,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(ProductCard, {
-                                            imageUrl: "/images 2.png",
-                                            discount: "15%",
-                                            productName: "Basket of Pepper",
-                                            brand: "StarStar Shop",
-                                            originalPrice: "NGN50.00",
-                                            discountedPrice: "NGN37.00",
-                                            rating: 5,
-                                            reviewCount: 4
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                            lineNumber: 112,
-                                            columnNumber: 17
-                                        }, this)
+                                        children: storeProducts?.map((product)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(ProductCard, {
+                                                imageUrl: product.image,
+                                                discount: "15%",
+                                                productName: product.name,
+                                                brand: "StarStar Shop",
+                                                originalPrice: "NGN50.00",
+                                                discountedPrice: "NGN37.00",
+                                                rating: product.rating,
+                                                reviewCount: product.reviewCount
+                                            }, product._id, false, {
+                                                fileName: "[project]/src/pages/store-view/[slug].tsx",
+                                                lineNumber: 133,
+                                                columnNumber: 19
+                                            }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                        lineNumber: 111,
+                                        lineNumber: 131,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/store-view/[slug].tsx",
-                            lineNumber: 108,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/pages/store-view/[slug].tsx",
-                    lineNumber: 47,
+                    lineNumber: 77,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/pages/store-view/[slug].tsx",
-                lineNumber: 46,
+                lineNumber: 76,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/pages/store-view/[slug].tsx",
-        lineNumber: 43,
+        lineNumber: 73,
         columnNumber: 5
     }, this);
 };

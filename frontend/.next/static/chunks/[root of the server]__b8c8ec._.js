@@ -567,28 +567,30 @@ const AuthContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
 const AuthProvider = ({ children })=>{
     _s();
     const [isAuthenticated, setIsAuthenticated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const login = ()=>{
+    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(undefined); // Define user state
+    const login = (userData)=>{
         setIsAuthenticated(true);
-    // Store user data in local storage or session storage if needed
+        setUser(userData); // Store user data in context
     };
     const logout = ()=>{
         setIsAuthenticated(false);
-    // Clear user data from storage if needed
+        setUser(undefined); // Clear user data on logout
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AuthContext.Provider, {
         value: {
             isAuthenticated,
             login,
-            logout
+            logout,
+            user
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/src/contexts/AuthContext.tsx",
-        lineNumber: 27,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 };
-_s(AuthProvider, "BT2f1XiqCgFHwobQTWR7kond0Ig=");
+_s(AuthProvider, "zaGfFCuTmpQq6oQfItfuc2T/70I=");
 _c = AuthProvider;
 const useAuth = ()=>{
     _s1();

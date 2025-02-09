@@ -41,7 +41,7 @@ const CategoryCollection = () => {
                     <Box className="p-4 bg-[#f6f6f6]">
                       <Box className="flex justify-between items-start">
                         <div>
-                          <h6 className="font-bold">Mobile Accessories</h6>
+                          <h6 className="font-bold">Vegetables</h6>
                           <p className="text-[12px]">7 Products</p>
                         </div>
                         <div>
@@ -76,7 +76,7 @@ const CategoryCollection = () => {
                     <Box className="p-4 bg-[#f6f6f6]">
                       <Box className="flex justify-between items-start">
                         <div>
-                          <h6 className="font-bold">Mobile Accessories</h6>
+                          <h6 className="font-bold">Legumes</h6>
                           <p className="text-[12px]">7 Products</p>
                         </div>
                         <div>
@@ -111,7 +111,7 @@ const CategoryCollection = () => {
                     <Box className="p-4 bg-[#f6f6f6]">
                       <Box className="flex justify-between items-start">
                         <div>
-                          <h6 className="font-bold">Mobile Accessories</h6>
+                          <h6 className="font-bold">Fruits</h6>
                           <p className="text-[12px]">7 Products</p>
                         </div>
                         <div>
@@ -146,7 +146,7 @@ const CategoryCollection = () => {
                     <Box className="p-4 bg-[#f6f6f6]">
                       <Box className="flex justify-between items-start">
                         <div>
-                          <h6 className="font-bold">Mobile Accessories</h6>
+                          <h6 className="font-bold">Tuber Vegetables</h6>
                           <p className="text-[12px]">7 Products</p>
                         </div>
                         <div>

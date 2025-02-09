@@ -1,5 +1,12 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/uploadproduct": "pages/uploadproduct.js",
+  "/store-view/[slug]": "pages/store-view/[slug].js",
+  "/_error": "pages/_error.js",
+  "/": "pages/index.js",
+  "/products": "pages/products.js",
+  "/product/[slug]": "pages/product/[slug].js",
+  "/cartpage": "pages/cartpage.js",
+  "/store-view/inventory": "pages/store-view/inventory.js"
 }
