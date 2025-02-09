@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useAuth } from "../contexts/AuthContext"; // Import useAuth
 import React, { useState } from "react";
 
 interface FormValues {
@@ -15,47 +16,75 @@ interface FormValues {
   price: string;
   description: string;
   images: File[];
+  vendor: string; // Add vendor field to form values
 }
 
 const UploadProduct: React.FC = () => {
-  // Initial form values
+  const { user } = useAuth(); // Get the authenticated user
   const [images, setImages] = useState<File[]>([]);
-  
+
   const initialValues: FormValues = {
     productName: "",
     price: "",
     description: "",
     images: [],
+    vendor: user?.id || "", // Include vendor ID in initial values
   };
 
   const handleSubmit = async (values: FormValues) => {
+    const userID = localStorage.getItem("userId"); // Retrieve vendor ID
     const formData = new FormData();
+    formData.append("vendor", userID || ""); // Append vendor ID directly from user context
+  
+    console.log("userId", userID);
+    console.log("FormData being sent:", {
+      productName: values.productName,
+      price: values.price,
+      description: values.description,
+      vendor: values.vendor,
+      images: values.images,
+    }); // Log FormData for debugging
+  
+    // Convert images to Base64 and append them individually
+    for (const image of values.images) {
+      const base64Image = await convertFileToBase64(image);
+      formData.append("images", base64Image); // Append each image as a Base64 string
+    }
+  
+    // Append other fields
     formData.append("productName", values.productName);
     formData.append("price", values.price);
     formData.append("description", values.description);
-    values.images.forEach((image) => {
-      formData.append("images", image);
-    });
-
+  
     try {
-      const response = await fetch('http://localhost:9000/api/product/', {
-        method: 'POST',
+      const response = await fetch("http://localhost:9000/api/product/", {
+        method: "POST",
         body: formData,
       });
-
+  
       if (!response.ok) {
-        throw new Error('Failed to upload product');
+        throw new Error("Failed to upload product");
       }
-
+  
       const data = await response.json();
-      alert('Product uploaded successfully: ' + JSON.stringify(data));
+      alert("Product uploaded successfully: " + JSON.stringify(data));
     } catch (error: unknown) {
       if (error instanceof Error) {
-        alert('Error uploading product: ' + error.message);
+        alert("Error uploading product: " + error.message);
       } else {
-        alert('Error uploading product: An unknown error occurred');
+        alert("Error uploading product: An unknown error occurred");
       }
     }
+  };
+
+  // Helper function to convert image files to Base64
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   return (
@@ -63,10 +92,7 @@ const UploadProduct: React.FC = () => {
       <Box>
         <Container maxWidth={"xl"}>
           <Box className="m-10">
-            <Formik
-              initialValues={initialValues}
-              onSubmit={handleSubmit}
-            >
+            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
               {({ handleSubmit, setFieldValue }) => (
                 <Form onSubmit={handleSubmit}>
                   <div className="mb-6">
@@ -131,7 +157,9 @@ const UploadProduct: React.FC = () => {
                       multiple
                       onChange={(event) => {
                         if (event.currentTarget.files) {
-                          const filesArray = Array.from(event.currentTarget.files);
+                          const filesArray = Array.from(
+                            event.currentTarget.files
+                          );
                           setImages(filesArray);
                           setFieldValue("images", filesArray);
                         }
@@ -146,12 +174,34 @@ const UploadProduct: React.FC = () => {
 
                     <Box className="bg-white h-[150px] p-4 overflow-scroll overflow-x-hidden">
                       {images.map((file) => (
-                        <Box key={file.name} display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                          <img src={URL.createObjectURL(file)} alt={file.name} style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
-                          <Button onClick={() => {
-                            setImages(images.filter((img) => img !== file));
-                            setFieldValue("images", images.filter((img) => img !== file));
-                          }} color="error">Remove</Button>
+                        <Box
+                          key={file.name}
+                          display="flex"
+                          justifyContent="space-between"
+                          alignItems="center"
+                          mb={1}
+                        >
+                          <img
+                            src={URL.createObjectURL(file)}
+                            alt={file.name}
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              objectFit: "cover",
+                            }}
+                          />
+                          <Button
+                            onClick={() => {
+                              setImages(images.filter((img) => img !== file));
+                              setFieldValue(
+                                "images",
+                                images.filter((img) => img !== file)
+                              );
+                            }}
+                            color="error"
+                          >
+                            Remove
+                          </Button>
                         </Box>
                       ))}
                     </Box>

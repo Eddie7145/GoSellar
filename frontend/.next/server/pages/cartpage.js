@@ -1,6 +1,6 @@
 const CHUNK_PUBLIC_PATH = "server/pages/cartpage.js";
 const runtime = require("../chunks/ssr/[turbopack]_runtime.js");
-runtime.loadChunk("server/chunks/ssr/[root of the server]__943e98._.js");
+runtime.loadChunk("server/chunks/ssr/[root of the server]__a9d63a._.js");
 runtime.loadChunk("server/chunks/ssr/node_modules_next_3b144a._.js");
 runtime.loadChunk("server/chunks/ssr/node_modules_@mui_material_b01ec3._.js");
 runtime.loadChunk("server/chunks/ssr/node_modules_@mui_system_esm_406cfd._.js");

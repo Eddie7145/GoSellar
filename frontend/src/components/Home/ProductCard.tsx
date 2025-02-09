@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import { Favorite, Visibility, Share } from '@mui/icons-material';
+import { useRouter } from "next/router";
 
 interface ProductCardProps {
     imageUrl: string;
@@ -23,6 +24,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
     rating,
     reviewCount
 }) => {
+      const router = useRouter();
+    
     return (
         <Card className="w-full rounded shadow-lg group mx-3">
             <div className="relative">
@@ -59,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <span className="text-gray-600 text-sm ml-2">({reviewCount})</span>
                 </div>
                 <Typography className="text-gray-600 text-sm mt-1">{brand}</Typography>
-                <Typography className="text-gray-900 font-bold text-lg mt-1">{productName}</Typography>
+                <Typography className="text-gray-900 font-bold text-lg mt-1 cursor-pointer" onClick={() => router.push("/product/[slug].tsx")}>{productName}</Typography>
                 <Typography className="text-gray-500 line-through">{originalPrice}</Typography>
                 <Typography className="font-bold text-xl text-[#00670c]">{discountedPrice}</Typography>
             </CardContent>

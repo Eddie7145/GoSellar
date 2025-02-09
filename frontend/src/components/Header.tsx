@@ -13,6 +13,7 @@ import { Search, ArrowDropDown, Spa } from "@mui/icons-material";
 import NavBar from "./NavBar";
 import { ShoppingCart } from "@mui/icons-material"; // Import ShoppingCart icon
 import { useCart } from "@/contexts/CartContext";
+import { useRouter } from "next/router";
 
 // Define the type for search results
 interface Product {
@@ -21,6 +22,7 @@ interface Product {
 }
 
 const Header: React.FC = () => {
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -63,7 +65,10 @@ const Header: React.FC = () => {
         <Box className="flex flex-col lg:flex-row items-center justify-between py-4">
           {/* Left Section - Logo */}
           <Box className="flex items-center mb-4 lg:mb-0">
-            <Box className="flex items-center gap-4">
+            <Box
+              className="flex items-center gap-4 cursor-pointer"
+              onClick={() => router.push("/")}
+            >
               <Box className="bg-[#00670c] p-2 rounded">
                 <Spa className="text-white text-2xl" />
               </Box>
@@ -131,7 +136,7 @@ const Header: React.FC = () => {
 
           <Box className="flex items-center">
             {/* Right Section - Cart Icon */}
-            <Box sx={{ position: "relative" }}>
+            <Box sx={{ position: "relative" }} onClick={() => router.push("/cartpage")}>
               <IconButton className="ml-2">
                 <ShoppingCart />
                 {totalCartItems > 0 && (

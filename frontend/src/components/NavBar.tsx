@@ -14,6 +14,7 @@ import {
   Box,
 } from "@mui/material";
 import { Formik, Form, Field } from "formik";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
   const { isAuthenticated, login, logout } = useAuth(); // Get authentication state and functions
@@ -30,7 +31,11 @@ const NavBar = () => {
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) =>
     setProfileMenuAnchor(event.currentTarget); // Function to open profile menu
   const handleProfileMenuClose = () => setProfileMenuAnchor(null); // Function to close profile menu
-  const handleProfileNavigation = () => {
+const router = useRouter(); // Import useRouter from next/router
+
+const handleProfileNavigation = () => {
+    router.push("/store-view/[slug].tsx"); // Navigate to the store-view page with the slug
+
     // Logic for navigating to the profile page
     handleProfileMenuClose();
   };
@@ -72,9 +77,11 @@ const NavBar = () => {
 
       // Store the token in localStorage
       localStorage.setItem("userToken", data.token);
+      localStorage.setItem("userId", data._id);
 
-      // Update authentication state
-      login();
+      // Update authentication state with user ID
+      login({ id: data.userId }); // Assuming the backend returns userId
+
 
       // Close the login modal
       handleCloseLogin();
@@ -157,7 +164,9 @@ const NavBar = () => {
                   open={Boolean(profileMenuAnchor)}
                   onClose={handleProfileMenuClose}
                 >
-                  <MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
+<MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
+<MenuItem onClick={() => router.push('/store-view/inventory')}>Inventory</MenuItem>
+
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </>

@@ -10,29 +10,34 @@ interface StoreDataType {
   logo?: string;
   name?: string;
   rating?: number;
-  reviewCount?: number;
-  ordersCount?: number;
-  productReview?: string;
   productCount?: number;
+  description?: string; // Added description property
 }
 
 const StoreView: React.FC = () => {
   const router = useRouter();
   const [storeData, setStoreData] = useState<StoreDataType | null>(null); // Define state for store data
+  const [storeProducts, setStoreProducts] = useState([]); // Define state for store products
   const [loading, setLoading] = useState<boolean>(true); // Define loading state
   const [error, setError] = useState<string | null>(null); // Define error state
+  const [userID, setUserID] = useState<string | null>(null); // Define state for user ID
+  const [showMore, setShowMore] = useState<boolean>(false); // State for toggling description visibility
 
   useEffect(() => {
     const fetchStoreData = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/api/user/profile`); // Fetch user profile data
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
+        const response = await fetch(`http://localhost:9000/api/user/profile`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
+        });
+
         const data = await response.json();
         setStoreData(data); // Set the store data
       } catch (error) {
-        setError(error instanceof Error ? error.message : 'An error occurred'); // Set error message
+        setError(error instanceof Error ? error.message : "An error occurred"); // Set error message
       } finally {
         setLoading(false); // Set loading to false after fetch
       }
@@ -40,6 +45,31 @@ const StoreView: React.FC = () => {
 
     fetchStoreData();
   }, []);
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId"); // Retrieve vendor ID
+    setUserID(userId); // Set the user ID in state
+  }, []);
+
+  useEffect(() => {
+    const fetchStoreProducts = async () => {
+      if (!userID) return; // Skip if userID is not available
+
+      try {
+        const response = await fetch(
+          `http://localhost:9000/api/product?vendorId=${userID}`
+        ); // Fetch user profile data/products?vendorId=67a7ad3a9258bf614b5c632b
+        const data = await response.json();
+        setStoreProducts(data); // Set the store products
+      } catch (error) {
+        setError(error instanceof Error ? error.message : "An error occurred"); // Set error message
+      } finally {
+        setLoading(false); // Set loading to false after fetch
+      }
+    };
+
+    fetchStoreProducts();
+  }, [userID]); // Run this effect when userID changes
 
   return (
     <Layout>
@@ -55,11 +85,7 @@ const StoreView: React.FC = () => {
             />
           </Box>
           <Box className="p-3 bg-slate-100">
-            <Grid
-              container
-              spacing={3}
-              className="flex justify-between items-center"
-            >
+            <Grid container spacing={3} className="flex justify-between items-center">
               <Grid item xs={3}>
                 <Box className="flex justify-between items-center gap-3">
                   <div>
@@ -70,59 +96,55 @@ const StoreView: React.FC = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-3">
-                    <h5 className="font-medium">
-                      {storeData?.name || "Food Market"}
-                    </h5>
-                    <div className="flex items-center gap-3">
-                      <Rating readOnly value={storeData?.rating || 5} />
-                      <p>({storeData?.reviewCount || 2})</p>
-                    </div>
+                    <h5 className="font-medium">{storeData?.name || "Food Market"}</h5>
                     <div className="flex gap-3 items-center">
-                      <p>{storeData?.ordersCount || 27} Orders</p>
+                      <Rating readOnly value={storeData?.rating || 5} />
+                      <p>({storeData?.productCount || 0})</p>
                     </div>
+                    <p className="mt-2">{storeData?.description?.slice(0, showMore ? undefined : 100) || "No description available."}</p>
+                    {storeData?.description && storeData.description.length > 100 && (
+                      <Button onClick={() => setShowMore(!showMore)} className="text-blue-500">
+                        {showMore ? "See Less" : "See More"}
+                      </Button>
+                    )}
                   </div>
                 </Box>
               </Grid>
               <Grid item xs={3}>
                 <Box className="bg-white p-4 flex flex-col gap-3 items-center justify-center">
-                  <h5 className="font-bold text-[30px] text-[#00670c]">
-                    {storeData?.productReview || "100%"}
-                  </h5>
-                  <p>Product Review</p>
+                  <h5 className="font-bold text-[30px] text-[#00670c]">{storeData?.rating || 5}</h5>
+                  <p>Ratings</p>
                 </Box>
               </Grid>
               <Grid item xs={3}>
                 <Box className="bg-white p-4 flex flex-col gap-3 items-center justify-center">
-                  <h5 className="font-bold text-[30px] text-[#00670c]">
-                    {storeData?.productCount || 6}
-                  </h5>
+                  <h5 className="font-bold text-[30px] text-[#00670c]">{storeData?.productCount || 6}</h5>
                   <p>Products</p>
                 </Box>
               </Grid>
-              <Button
-                className="p-4 bg-[#00670c] text-white hover:bg-[#389e44]"
-                onClick={() => router.push("/uploadproduct")}
-              >
+              <Button className="p-4 bg-[#00670c] text-white hover:bg-[#389e44]" onClick={() => router.push("/uploadproduct")}>
                 Upload Product
               </Button>
             </Grid>
           </Box>
           <Box className="bg-white p-4 mt-7">
-            <h1 className="text-3xl font-bold mb-5">Stores Product</h1>
+            <h1 className="text-3xl font-bold mb-5">Store Products</h1>
             <Grid container spacing={3}>
               <Grid item xs={2.3}>
-                <ProductCard
-                  imageUrl={"/images 2.png"}
-                  discount={"15%"}
-                  productName={"Basket of Pepper"}
-                  brand={"StarStar Shop"}
-                  originalPrice={"NGN50.00"}
-                  discountedPrice={"NGN37.00"}
-                  rating={5}
-                  reviewCount={4}
-                />
+                {storeProducts?.map((product) => (
+                  <ProductCard
+                    key={product._id}
+                    imageUrl={product.image}
+                    discount={"15%"}
+                    productName={product.name}
+                    brand={"StarStar Shop"}
+                    originalPrice={"NGN50.00"}
+                    discountedPrice={"NGN37.00"}
+                    rating={product.rating}
+                    reviewCount={product.reviewCount}
+                  />
+                ))}
               </Grid>
-              {/* Additional ProductCards can be added here */}
             </Grid>
           </Box>
         </Container>

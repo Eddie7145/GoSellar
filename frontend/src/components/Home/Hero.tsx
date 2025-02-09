@@ -75,22 +75,21 @@ const Hero: React.FC = () => {
   // Categories data with optional subcategories
   const categories: Category[] = [
     {
-      name: "Network Components",
-      subcategories: ["Routers", "Switches", "Cables"],
+      name: "Vegetables",
+      subcategories: ["Leafy Greens", "Root Vegetables", "Cruciferous Vegetables", "Peppers & Chillies", "Onions & Garlic"],
     },
     {
-      name: "Laptop, Tabs & Notebooks",
-      subcategories: ["Laptops", "Tablets", "Notebooks"],
+      name: "Fruits",
+      subcategories: ["Citrus Fruits", "Tropical Fruits", "Berries", "Melons", "Apples & Pears"],
     },
-    { name: "Consumer electronics" },
-    { name: "Gadgets" },
-    { name: "Computer & Office", subcategories: ["Monitors", "Desktops"] },
-    { name: "Mobile Accessories" },
-    { name: "Smartphone" },
-    { name: "Wearable" },
-    { name: "Camera Accessories" },
-    { name: "TV & Home Appliance" },
-    { name: "Audio" },
+    { name: "Herbs & Spices" },
+    { name: "Eggs" },
+    { name: "Cereal Grains", subcategories: ["Rice", "Maize", "Wheat", "Barley", "Sorghum"] },
+    { name: "Poultry" },
+    { name: "Processed & Packaged Goods" },
+    { name: "Seeds & Seedlings" },
+    { name: "Livestock & Animal Products" },
+    { name: "Grains & Pulses" },
   ];
 
   // State for managing popup opn/close behavior

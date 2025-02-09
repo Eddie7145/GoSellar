@@ -2,8 +2,9 @@ import React, { createContext, useContext, useState } from "react";
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: () => void; // Adjusted to not require userData for now
+  login: (userData: { id: string }) => void; // Adjusted to include user data
   logout: () => void;
+  user?: { id: string }; // Add user property to context type
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -12,19 +13,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<{ id: string } | undefined>(undefined); // Define user state
 
-  const login = () => {
+  const login = (userData: { id: string }) => {
     setIsAuthenticated(true);
-    // Store user data in local storage or session storage if needed
+    setUser(userData); // Store user data in context
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    // Clear user data from storage if needed
+    setUser(undefined); // Clear user data on logout
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, user }}>
       {children}
     </AuthContext.Provider>
   );

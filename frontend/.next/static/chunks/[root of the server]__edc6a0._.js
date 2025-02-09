@@ -656,34 +656,36 @@ const AuthContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
 const AuthProvider = ({ children })=>{
     _s();
     const [isAuthenticated, setIsAuthenticated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const login = ()=>{
+    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(undefined); // Define user state
+    const login = (userData)=>{
         setIsAuthenticated(true);
-    // Store user data in local storage or session storage if needed
+        setUser(userData); // Store user data in context
     };
     const logout = ()=>{
         setIsAuthenticated(false);
-    // Clear user data from storage if needed
+        setUser(undefined); // Clear user data on logout
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AuthContext.Provider, {
         value: {
             isAuthenticated,
             login,
-            logout
+            logout,
+            user
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/src/contexts/AuthContext.tsx",
-        lineNumber: 25,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 };
-_s(AuthProvider, "BT2f1XiqCgFHwobQTWR7kond0Ig=");
+_s(AuthProvider, "zaGfFCuTmpQq6oQfItfuc2T/70I=");
 _c = AuthProvider;
 const useAuth = ()=>{
     _s1();
     const context = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useContext"])(AuthContext);
     if (context === undefined) {
-        throw new Error('useAuth must be used within an AuthProvider');
+        throw new Error("useAuth must be used within an AuthProvider");
     }
     return context;
 };
@@ -704,9 +706,8 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/yup/index.esm.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [client] (ecmascript)"); // Import useRouter
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/contexts/AuthContext.tsx [client] (ecmascript)"); // Import useAuth
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Box/Box.js [client] (ecmascript) <export default as Box>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Container/Container.js [client] (ecmascript) <export default as Container>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [client] (ecmascript) <export default as Button>");
@@ -725,63 +726,38 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-;
-// Login Validation Schema using Yup
-const LoginSchema = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.object().shape({
-    email: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().email("Invalid email").required("Required"),
-    password: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().min(6, "Too Short!").required("Required")
-});
-// SignUp Validation Schema using Yup
-const SignupSchema = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.object().shape({
-    name: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().required("Name is required"),
-    email: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().email("Invalid email format").required("Email is required"),
-    phone: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().required("Phone is required"),
-    password: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().min(8, "Password must be at least 8 characters").required("Password is required"),
-    confirmPassword: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().oneOf([
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.ref("password")
-    ], "Passwords must match").required("Confirm password is required"),
-    terms: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.bool().oneOf([
-        true
-    ], "You must agree with terms and conditions"),
-    userType: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().required("User type is required"),
-    storeName: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().test("storeName", "Store name is required", function(value) {
-        const { userType } = this.parent; // Access the parent object
-        return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
-    }),
-    storeDescription: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$yup$2f$index$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__.string().test("storeDescription", "Store description is required", function(value) {
-        const { userType } = this.parent; // Access the parent object
-        return userType === "farmer" ? !!value : true; // Validate only if userType is "farmer"
-    })
-});
-const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 600,
-    bgcolor: "background.paper",
-    boxShadow: 15,
-    p: 4
-};
 const NavBar = ()=>{
     _s();
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])(); // Define router
-    const { isAuthenticated, login, logout } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])(); // Use authentication context
-    const [openLogin, setOpenLogin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [openSignup, setOpenSignup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [userType, setUserType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [profileMenuAnchor, setProfileMenuAnchor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const handleOpenLogin = ()=>setOpenLogin(true);
-    const handleCloseLogin = ()=>setOpenLogin(false);
-    const handleOpenSignup = ()=>setOpenSignup(true);
-    const handleCloseSignup = ()=>setOpenSignup(false);
-    const handleProfileMenuOpen = (event)=>setProfileMenuAnchor(event.currentTarget);
-    const handleProfileMenuClose = ()=>setProfileMenuAnchor(null);
+    const { isAuthenticated, login, logout } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])(); // Get authentication state and functions
+    const [openLogin, setOpenLogin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false); // State for login modal
+    const [openSignup, setOpenSignup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false); // State for signup modal
+    const [userType, setUserType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(""); // State for user type
+    const [profileMenuAnchor, setProfileMenuAnchor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null); // State for profile menu anchor
+    const handleOpenLogin = ()=>setOpenLogin(true); // Function to open login modal
+    const handleCloseLogin = ()=>setOpenLogin(false); // Function to close login modal
+    const handleOpenSignup = ()=>setOpenSignup(true); // Function to open signup modal
+    const handleCloseSignup = ()=>setOpenSignup(false); // Function to close signup modal
+    const handleProfileMenuOpen = (event)=>setProfileMenuAnchor(event.currentTarget); // Function to open profile menu
+    const handleProfileMenuClose = ()=>setProfileMenuAnchor(null); // Function to close profile menu
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])(); // Import useRouter from next/router
     const handleProfileNavigation = ()=>{
-        router.push("/store-view/[slug].tsx"); // Adjust the path as necessary for the profile page
+        router.push("/store-view/[slug].tsx"); // Navigate to the store-view page with the slug
+        // Logic for navigating to the profile page
+        handleProfileMenuClose();
+    };
+    const style = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: 600,
+        bgcolor: "background.paper",
+        boxShadow: 15,
+        p: 4
     };
     const handleLoginSubmit = async (values)=>{
         try {
+            console.log("Attempting login with:", values); // Debug log
             const response = await fetch("http://localhost:9000/api/user/login", {
                 method: "POST",
                 headers: {
@@ -789,17 +765,25 @@ const NavBar = ()=>{
                 },
                 body: JSON.stringify(values)
             });
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error("Login failed:", errorData);
-                throw new Error("Login failed");
-            }
+            console.log("Response status:", response.status); // Debug log
             const data = await response.json();
-            console.log("Login successful:", data);
-            alert("Login successful: " + JSON.stringify(data));
-            login(); // Update authentication state
+            console.log("Login response:", data); // Debug log
+            if (!response.ok) {
+                throw new Error(data.message || "Login failed");
+            }
+            // Store the token in localStorage
+            localStorage.setItem("userToken", data.token);
+            localStorage.setItem("userId", data._id);
+            // Update authentication state with user ID
+            login({
+                id: data.userId
+            }); // Assuming the backend returns userId
+            // Close the login modal
             handleCloseLogin();
+            // Optional: Show success message
+            alert("Login successful!");
         } catch (error) {
+            console.error("Login error:", error); // Debug log
             if (error instanceof Error) {
                 alert("Error: " + error.message);
             } else {
@@ -809,6 +793,7 @@ const NavBar = ()=>{
     };
     const handleSignupSubmit = async (values)=>{
         try {
+            console.log("Sending registration data:", values); // Log the data being sent
             const response = await fetch("http://localhost:9000/api/user/register", {
                 method: "POST",
                 headers: {
@@ -816,14 +801,17 @@ const NavBar = ()=>{
                 },
                 body: JSON.stringify(values)
             });
-            if (!response.ok) {
-                throw new Error("Registration failed");
-            }
+            console.log("Registration response status:", response.status); // Log the response status
             const data = await response.json();
+            console.log("Registration response data:", data); // Log the response data
+            if (!response.ok) {
+                throw new Error(data.message || "Registration failed");
+            }
             alert("Registration successful: " + JSON.stringify(data));
             handleCloseSignup();
-            handleOpenLogin(); // Open login modal after successful registration
+            handleOpenLogin();
         } catch (error) {
+            console.error("Registration error:", error); // Log any errors
             if (error instanceof Error) {
                 alert("Error: " + error.message);
             } else {
@@ -832,7 +820,6 @@ const NavBar = ()=>{
         }
     };
     const handleLogout = ()=>{
-        // Clear user session and reset UI
         alert("Logged out successfully");
         logout(); // Reset authentication state
     };
@@ -854,7 +841,7 @@ const NavBar = ()=>{
                                     onClick: handleProfileMenuOpen
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/NavBar.tsx",
-                                    lineNumber: 142,
+                                    lineNumber: 156,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
@@ -867,21 +854,29 @@ const NavBar = ()=>{
                                             children: "Profile"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 153,
-                                            columnNumber: 19
+                                            lineNumber: 167,
+                                            columnNumber: 1
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
+                                            onClick: ()=>router.push('/store-view/inventory'),
+                                            children: "Inventory"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/NavBar.tsx",
+                                            lineNumber: 168,
+                                            columnNumber: 1
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
                                             onClick: handleLogout,
                                             children: "Logout"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 154,
+                                            lineNumber: 170,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/NavBar.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 162,
                                     columnNumber: 17
                                 }, this)
                             ]
@@ -893,7 +888,7 @@ const NavBar = ()=>{
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/NavBar.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 175,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -902,24 +897,24 @@ const NavBar = ()=>{
                                     children: "Register"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/NavBar.tsx",
-                                    lineNumber: 165,
+                                    lineNumber: 181,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/src/components/NavBar.tsx",
-                        lineNumber: 139,
+                        lineNumber: 153,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/NavBar.tsx",
-                    lineNumber: 138,
+                    lineNumber: 152,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/NavBar.tsx",
-                lineNumber: 137,
+                lineNumber: 151,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -932,7 +927,6 @@ const NavBar = ()=>{
                             email: "",
                             password: ""
                         },
-                        validationSchema: LoginSchema,
                         onSubmit: handleLoginSubmit,
                         children: ({ handleSubmit })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Form"], {
                                 onSubmit: handleSubmit,
@@ -945,7 +939,7 @@ const NavBar = ()=>{
                                                 children: "Login"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 203,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -953,13 +947,13 @@ const NavBar = ()=>{
                                                 children: "Welcome back, Ready to rock and roll?"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 204,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 202,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -976,7 +970,7 @@ const NavBar = ()=>{
                                                     variant: "outlined"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 195,
+                                                    lineNumber: 210,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -988,18 +982,18 @@ const NavBar = ()=>{
                                                     variant: "outlined"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 217,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 194,
+                                            lineNumber: 209,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 208,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -1008,28 +1002,28 @@ const NavBar = ()=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 213,
+                                        lineNumber: 228,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/NavBar.tsx",
-                                lineNumber: 186,
+                                lineNumber: 201,
                                 columnNumber: 15
                             }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/NavBar.tsx",
-                        lineNumber: 180,
+                        lineNumber: 196,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/NavBar.tsx",
-                    lineNumber: 179,
+                    lineNumber: 195,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/NavBar.tsx",
-                lineNumber: 178,
+                lineNumber: 194,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -1049,7 +1043,6 @@ const NavBar = ()=>{
                             storeName: "",
                             storeDescription: ""
                         },
-                        validationSchema: SignupSchema,
                         onSubmit: handleSignupSubmit,
                         children: ({ handleSubmit, setFieldValue })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Form"], {
                                 onSubmit: handleSubmit,
@@ -1062,7 +1055,7 @@ const NavBar = ()=>{
                                                 children: "Register"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 246,
+                                                lineNumber: 260,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1070,13 +1063,13 @@ const NavBar = ()=>{
                                                 children: "Let's get you started right away"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 247,
+                                                lineNumber: 261,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 245,
+                                        lineNumber: 259,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1097,7 +1090,7 @@ const NavBar = ()=>{
                                                 children: "Farmer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 264,
+                                                lineNumber: 278,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
@@ -1105,13 +1098,13 @@ const NavBar = ()=>{
                                                 children: "Buyer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 265,
+                                                lineNumber: 279,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 251,
+                                        lineNumber: 265,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1124,12 +1117,12 @@ const NavBar = ()=>{
                                             variant: "outlined"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 268,
+                                            lineNumber: 282,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 267,
+                                        lineNumber: 281,
                                         columnNumber: 17
                                     }, this),
                                     userType === "farmer" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1143,7 +1136,7 @@ const NavBar = ()=>{
                                                 variant: "outlined"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 278,
+                                                lineNumber: 292,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1154,13 +1147,13 @@ const NavBar = ()=>{
                                                 variant: "outlined"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 285,
+                                                lineNumber: 299,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 277,
+                                        lineNumber: 291,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1180,7 +1173,7 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 297,
+                                                            lineNumber: 311,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1192,18 +1185,18 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 304,
+                                                            lineNumber: 318,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 296,
+                                                    lineNumber: 310,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 295,
+                                                lineNumber: 309,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1221,7 +1214,7 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 317,
+                                                            lineNumber: 331,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
@@ -1233,24 +1226,24 @@ const NavBar = ()=>{
                                                             variant: "outlined"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/NavBar.tsx",
-                                                            lineNumber: 325,
+                                                            lineNumber: 339,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/NavBar.tsx",
-                                                    lineNumber: 316,
+                                                    lineNumber: 330,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/NavBar.tsx",
-                                                lineNumber: 315,
+                                                lineNumber: 329,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 294,
+                                        lineNumber: 308,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$FormControlLabel$2f$FormControlLabel$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FormControlLabel$3e$__["FormControlLabel"], {
@@ -1258,14 +1251,14 @@ const NavBar = ()=>{
                                             name: "terms"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/NavBar.tsx",
-                                            lineNumber: 338,
+                                            lineNumber: 352,
                                             columnNumber: 28
                                         }, void 0),
                                         label: "I agree to the terms and conditions",
                                         className: "mt-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 337,
+                                        lineNumber: 351,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -1274,41 +1267,41 @@ const NavBar = ()=>{
                                         children: "Sign Up"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/NavBar.tsx",
-                                        lineNumber: 342,
+                                        lineNumber: 356,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/NavBar.tsx",
-                                lineNumber: 244,
+                                lineNumber: 258,
                                 columnNumber: 15
                             }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/NavBar.tsx",
-                        lineNumber: 228,
+                        lineNumber: 243,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/NavBar.tsx",
-                    lineNumber: 227,
+                    lineNumber: 242,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/NavBar.tsx",
-                lineNumber: 226,
+                lineNumber: 241,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/NavBar.tsx",
-        lineNumber: 136,
+        lineNumber: 150,
         columnNumber: 5
     }, this);
 };
-_s(NavBar, "WoNsS6IY5zT9R8BxFazhxp3v3s4=", false, function() {
+_s(NavBar, "XtmONbDQCyLZitYu7bTVfwYHcUo=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
 });
 _c = NavBar;
@@ -1394,6 +1387,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$NavBar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/NavBar.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$CartContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/contexts/CartContext.tsx [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Box/Box.js [client] (ecmascript) <export default as Box>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Container/Container.js [client] (ecmascript) <export default as Container>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Spa$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Spa.js [client] (ecmascript)");
@@ -1416,8 +1410,10 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
+;
 const Header = ()=>{
     _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const [anchorEl, setAnchorEl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [selectedCategory, setSelectedCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("All Categories");
@@ -1455,7 +1451,8 @@ const Header = ()=>{
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
                             className: "flex items-center mb-4 lg:mb-0",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
-                                className: "flex items-center gap-4",
+                                className: "flex items-center gap-4 cursor-pointer",
+                                onClick: ()=>router.push("/"),
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
                                         className: "bg-[#00670c] p-2 rounded",
@@ -1463,12 +1460,12 @@ const Header = ()=>{
                                             className: "text-white text-2xl"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header.tsx",
-                                            lineNumber: 68,
+                                            lineNumber: 73,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 67,
+                                        lineNumber: 72,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -1477,18 +1474,18 @@ const Header = ()=>{
                                         children: "GoSellar"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 70,
+                                        lineNumber: 75,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Header.tsx",
-                                lineNumber: 66,
+                                lineNumber: 68,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header.tsx",
-                            lineNumber: 65,
+                            lineNumber: 67,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1504,13 +1501,13 @@ const Header = ()=>{
                                         onClick: handleMenuClick,
                                         endIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ArrowDropDown$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                             fileName: "[project]/src/components/Header.tsx",
-                                            lineNumber: 90,
+                                            lineNumber: 95,
                                             columnNumber: 26
                                         }, void 0),
                                         children: selectedCategory
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 85,
+                                        lineNumber: 90,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
@@ -1527,7 +1524,7 @@ const Header = ()=>{
                                                 children: "Category 1"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.tsx",
-                                                lineNumber: 100,
+                                                lineNumber: 105,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
@@ -1538,13 +1535,13 @@ const Header = ()=>{
                                                 children: "Category 2"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 113,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 94,
+                                        lineNumber: 99,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$InputBase$2f$InputBase$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__InputBase$3e$__["InputBase"], {
@@ -1554,7 +1551,7 @@ const Header = ()=>{
                                         onChange: (e)=>setSearchQuery(e.target.value)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 122,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
@@ -1562,23 +1559,23 @@ const Header = ()=>{
                                         className: "bg-[#00670c] text-white px-4 rounded-none",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                             fileName: "[project]/src/components/Header.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 132,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 123,
+                                        lineNumber: 128,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Header.tsx",
-                                lineNumber: 81,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header.tsx",
-                            lineNumber: 80,
+                            lineNumber: 85,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1588,12 +1585,13 @@ const Header = ()=>{
                                     sx: {
                                         position: "relative"
                                     },
+                                    onClick: ()=>router.push("/cartpage"),
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                                         className: "ml-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ShoppingCart$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/Header.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 141,
                                                 columnNumber: 17
                                             }, this),
                                             totalCartItems > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1614,40 +1612,40 @@ const Header = ()=>{
                                                 children: totalCartItems
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 143,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Header.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 140,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Header.tsx",
-                                    lineNumber: 134,
+                                    lineNumber: 139,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$NavBar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/src/components/Header.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 164,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Header.tsx",
-                            lineNumber: 132,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Header.tsx",
-                    lineNumber: 63,
+                    lineNumber: 65,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Header.tsx",
-                lineNumber: 62,
+                lineNumber: 64,
                 columnNumber: 7
             }, this),
             searchResults.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1658,7 +1656,7 @@ const Header = ()=>{
                         children: "Search Results:"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header.tsx",
-                        lineNumber: 167,
+                        lineNumber: 172,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1666,29 +1664,30 @@ const Header = ()=>{
                                 children: result.name
                             }, result.id, false, {
                                 fileName: "[project]/src/components/Header.tsx",
-                                lineNumber: 170,
+                                lineNumber: 175,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header.tsx",
-                        lineNumber: 168,
+                        lineNumber: 173,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Header.tsx",
-                lineNumber: 166,
+                lineNumber: 171,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Header.tsx",
-        lineNumber: 61,
+        lineNumber: 63,
         columnNumber: 5
     }, this);
 };
-_s(Header, "lN3IZl25nK/b9HR/ZaRNQ5BncZI=", false, function() {
+_s(Header, "ff9NNSEJC87Zf/af+XbtZ/o95AQ=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$CartContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useCart"]
     ];
 });
@@ -2272,6 +2271,7 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Layout$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/Layout.tsx [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/contexts/AuthContext.tsx [client] (ecmascript)"); // Import useAuth
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Box/Box.js [client] (ecmascript) <export default as Box>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Container/Container.js [client] (ecmascript) <export default as Container>");
@@ -2286,41 +2286,65 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
+;
 const UploadProduct = ()=>{
     _s();
-    // Initial form values
+    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])(); // Get the authenticated user
     const [images, setImages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const initialValues = {
         productName: "",
         price: "",
         description: "",
-        images: []
+        images: [],
+        vendor: user?.id || ""
     };
     const handleSubmit = async (values)=>{
+        const userID = localStorage.getItem("userId"); // Retrieve vendor ID
         const formData = new FormData();
+        formData.append("vendor", userID || ""); // Append vendor ID directly from user context
+        console.log("userId", userID);
+        console.log("FormData being sent:", {
+            productName: values.productName,
+            price: values.price,
+            description: values.description,
+            vendor: values.vendor,
+            images: values.images
+        }); // Log FormData for debugging
+        // Convert images to Base64 and append them individually
+        for (const image of values.images){
+            const base64Image = await convertFileToBase64(image);
+            formData.append("images", base64Image); // Append each image as a Base64 string
+        }
+        // Append other fields
         formData.append("productName", values.productName);
         formData.append("price", values.price);
         formData.append("description", values.description);
-        values.images.forEach((image)=>{
-            formData.append("images", image);
-        });
         try {
-            const response = await fetch('http://localhost:9000/api/product/', {
-                method: 'POST',
+            const response = await fetch("http://localhost:9000/api/product/", {
+                method: "POST",
                 body: formData
             });
             if (!response.ok) {
-                throw new Error('Failed to upload product');
+                throw new Error("Failed to upload product");
             }
             const data = await response.json();
-            alert('Product uploaded successfully: ' + JSON.stringify(data));
+            alert("Product uploaded successfully: " + JSON.stringify(data));
         } catch (error) {
             if (error instanceof Error) {
-                alert('Error uploading product: ' + error.message);
+                alert("Error uploading product: " + error.message);
             } else {
-                alert('Error uploading product: An unknown error occurred');
+                alert("Error uploading product: An unknown error occurred");
             }
         }
+    };
+    // Helper function to convert image files to Base64
+    const convertFileToBase64 = (file)=>{
+        return new Promise((resolve, reject)=>{
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = ()=>resolve(reader.result);
+            reader.onerror = (error)=>reject(error);
+        });
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Layout$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2342,7 +2366,7 @@ const UploadProduct = ()=>{
                                                 children: "Upload Product"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 73,
+                                                lineNumber: 99,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2350,13 +2374,13 @@ const UploadProduct = ()=>{
                                                 children: "Make sure you enter all required fields"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 76,
+                                                lineNumber: 102,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 98,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2383,17 +2407,17 @@ const UploadProduct = ()=>{
                                                                 className: "text-red-500 text-sm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 93,
+                                                                lineNumber: 119,
                                                                 columnNumber: 29
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                            lineNumber: 84,
+                                                            lineNumber: 110,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                        lineNumber: 83,
+                                                        lineNumber: 109,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -2414,23 +2438,23 @@ const UploadProduct = ()=>{
                                                                 className: "text-red-500 text-sm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 112,
+                                                                lineNumber: 138,
                                                                 columnNumber: 29
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                            lineNumber: 102,
+                                                            lineNumber: 128,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 127,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 82,
+                                                lineNumber: 108,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextareaAutosize$2f$TextareaAutosize$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TextareaAutosize$3e$__["TextareaAutosize"], {
@@ -2440,7 +2464,7 @@ const UploadProduct = ()=>{
                                                 className: "mb-4 w-full h-[150px] p-4 rounded-md border bg-transparent placeholder:text-[#424242cc] border-[#adadadcc]"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 122,
+                                                lineNumber: 148,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2456,7 +2480,7 @@ const UploadProduct = ()=>{
                                                 className: "mb-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 129,
+                                                lineNumber: 155,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$client$5d$__$28$ecmascript$29$__["ErrorMessage"], {
@@ -2465,7 +2489,7 @@ const UploadProduct = ()=>{
                                                 className: "text-red-500 text-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 141,
+                                                lineNumber: 169,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2480,13 +2504,13 @@ const UploadProduct = ()=>{
                                                                 src: URL.createObjectURL(file),
                                                                 alt: file.name,
                                                                 style: {
-                                                                    width: '50px',
-                                                                    height: '50px',
-                                                                    objectFit: 'cover'
+                                                                    width: "50px",
+                                                                    height: "50px",
+                                                                    objectFit: "cover"
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 150,
+                                                                lineNumber: 184,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -2498,24 +2522,24 @@ const UploadProduct = ()=>{
                                                                 children: "Remove"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 151,
+                                                                lineNumber: 193,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, file.name, true, {
                                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                        lineNumber: 149,
+                                                        lineNumber: 177,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 175,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 107,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -2527,42 +2551,46 @@ const UploadProduct = ()=>{
                                         children: "Upload Product"
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                        lineNumber: 160,
+                                        lineNumber: 210,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                lineNumber: 71,
+                                lineNumber: 97,
                                 columnNumber: 17
                             }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                        lineNumber: 66,
+                        lineNumber: 95,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/pages/uploadproduct.tsx",
-                    lineNumber: 65,
+                    lineNumber: 94,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                lineNumber: 64,
+                lineNumber: 93,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/pages/uploadproduct.tsx",
-            lineNumber: 63,
+            lineNumber: 92,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/pages/uploadproduct.tsx",
-        lineNumber: 62,
+        lineNumber: 91,
         columnNumber: 5
     }, this);
 };
-_s(UploadProduct, "mOoWwfdsCKBG2MIVzAXM/MEStpE=");
+_s(UploadProduct, "B7WTxxlgl0WzZYeYn1IyIMeTBnI=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"]
+    ];
+});
 _c = UploadProduct;
 const __TURBOPACK__default__export__ = UploadProduct;
 var _c;
