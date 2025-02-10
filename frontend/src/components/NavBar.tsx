@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext"; // Import useAuth
 
 import {
@@ -17,7 +17,7 @@ import { Formik, Form, Field } from "formik";
 import { useRouter } from "next/router";
 
 const NavBar = () => {
-  const { isAuthenticated, login, logout } = useAuth(); // Get authentication state and functions
+  const { isAuthenticated, login, logout ,user } = useAuth(); // Get authentication state and functions
   const [openLogin, setOpenLogin] = useState(false); // State for login modal
   const [openSignup, setOpenSignup] = useState(false); // State for signup modal
   const [userType, setUserType] = useState(""); // State for user type
@@ -31,10 +31,17 @@ const NavBar = () => {
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) =>
     setProfileMenuAnchor(event.currentTarget); // Function to open profile menu
   const handleProfileMenuClose = () => setProfileMenuAnchor(null); // Function to close profile menu
-const router = useRouter(); // Import useRouter from next/router
+  const router = useRouter(); // Import useRouter from next/router
+  const [userID, setUserID] = useState<string | null>(null); // Define state for user ID
 
-const handleProfileNavigation = () => {
-    router.push("/store-view/[slug].tsx"); // Navigate to the store-view page with the slug
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId"); // Retrieve vendor ID
+    setUserID(userId); // Set the user ID in state
+  }, []);
+
+  const handleProfileNavigation = () => {
+    router.push(`/store-view/${userID}`); // Navigate to the store-view page with the slug
 
     // Logic for navigating to the profile page
     handleProfileMenuClose();
@@ -81,7 +88,6 @@ const handleProfileNavigation = () => {
 
       // Update authentication state with user ID
       login({ id: data.userId }); // Assuming the backend returns userId
-
 
       // Close the login modal
       handleCloseLogin();
@@ -164,8 +170,12 @@ const handleProfileNavigation = () => {
                   open={Boolean(profileMenuAnchor)}
                   onClose={handleProfileMenuClose}
                 >
-<MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
-<MenuItem onClick={() => router.push('/store-view/inventory')}>Inventory</MenuItem>
+                  <MenuItem onClick={handleProfileNavigation}>Profile</MenuItem>
+                  <MenuItem
+                    onClick={() => router.push("/store-view/inventory")}
+                  >
+                    Inventory
+                  </MenuItem>
 
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>

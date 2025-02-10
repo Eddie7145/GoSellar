@@ -6,6 +6,7 @@ import {
   getAllProducts,
   getAProductBySlug,
   getProductsByVendor,
+  searchProducts,
   updateProduct,
 } from "../controllers/productController.js";
 
@@ -19,6 +20,7 @@ const upload = multer({ dest: "uploads/" }); // Files will be stored in the "upl
 productRouter.post("/", upload.array("images", 5), createProduct);
 
 productRouter.get("/all", getAllProducts);
+productRouter.get("/search", searchProducts);
 productRouter.get("/:slug", getAProductBySlug);
 productRouter.get("/", getProductsByVendor);
 productRouter.put("/:id", updateProduct);

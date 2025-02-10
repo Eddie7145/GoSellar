@@ -1,9 +1,13 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
   "/store-view/inventory": "pages/store-view/inventory.js",
   "/_error": "pages/_error.js",
-  "/store-view/[slug]": "pages/store-view/[slug].js",
-  "/uploadproduct": "pages/uploadproduct.js"
+  "/": "pages/index.js",
+  "/products": "pages/products.js",
+  "/product/[slug]": "pages/product/[slug].js",
+  "/store-view/[id]": "pages/store-view/[id].js",
+  "/uploadproduct": "pages/uploadproduct.js",
+  "/stores": "pages/stores.js",
+  "/cartpage": "pages/cartpage.js"
 }

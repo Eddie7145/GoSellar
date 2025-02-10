@@ -10,9 +10,10 @@ import {
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useAuth } from "../contexts/AuthContext"; // Import useAuth
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface FormValues {
-  name: string;
+  productName: string;
   price: string;
   description: string;
   images: File[];
@@ -22,9 +23,10 @@ interface FormValues {
 const UploadProduct: React.FC = () => {
   const { user } = useAuth(); // Get the authenticated user
   const [images, setImages] = useState<File[]>([]);
+  const router = useRouter()
 
   const initialValues: FormValues = {
-    name: "",
+    productName: "",
     price: "",
     description: "",
     images: [],
@@ -38,21 +40,25 @@ const UploadProduct: React.FC = () => {
   
     console.log("userId", userID);
     console.log("FormData being sent:", {
-      productName: values.name,
+      name: values.productName,
       price: values.price,
       description: values.description,
       vendor: values.vendor,
       images: values.images,
     }); // Log FormData for debugging
   
-    // Convert images to Base64 and append them individually
+    // // Convert images to Base64 and append them individually
     for (const image of values.images) {
       const base64Image = await convertFileToBase64(image);
       formData.append("images", base64Image); // Append each image as a Base64 string
     }
+
+    // for (const image of values.images) {
+    //   formData.append("images", image);
+    // }
   
     // Append other fields
-    formData.append("productName", values.name);
+    formData.append("name", values.productName);
     formData.append("price", values.price);
     formData.append("description", values.description);
   
@@ -68,6 +74,7 @@ const UploadProduct: React.FC = () => {
   
       const data = await response.json();
       alert("Product uploaded successfully: " + JSON.stringify(data));
+      router.push('/store-view/[slug].tsx')
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert("Error uploading product: " + error.message);

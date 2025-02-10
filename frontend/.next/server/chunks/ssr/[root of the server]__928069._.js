@@ -1846,8 +1846,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 const UploadProduct = ()=>{
     const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$contexts$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])(); // Get the authenticated user
     const [images, setImages] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
+    const router = useRou;
     const initialValues = {
-        name: "",
+        productName: "",
         price: "",
         description: "",
         images: [],
@@ -1859,19 +1860,22 @@ const UploadProduct = ()=>{
         formData.append("vendor", userID || ""); // Append vendor ID directly from user context
         console.log("userId", userID);
         console.log("FormData being sent:", {
-            productName: values.name,
+            name: values.productName,
             price: values.price,
             description: values.description,
             vendor: values.vendor,
             images: values.images
         }); // Log FormData for debugging
-        // Convert images to Base64 and append them individually
+        // // Convert images to Base64 and append them individually
         for (const image of values.images){
             const base64Image = await convertFileToBase64(image);
             formData.append("images", base64Image); // Append each image as a Base64 string
         }
+        // for (const image of values.images) {
+        //   formData.append("images", image);
+        // }
         // Append other fields
-        formData.append("productName", values.name);
+        formData.append("name", values.productName);
         formData.append("price", values.price);
         formData.append("description", values.description);
         try {
@@ -1921,7 +1925,7 @@ const UploadProduct = ()=>{
                                                 children: "Upload Product"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 104,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -1929,13 +1933,13 @@ const UploadProduct = ()=>{
                                                 children: "Make sure you enter all required fields"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 107,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 103,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1962,17 +1966,17 @@ const UploadProduct = ()=>{
                                                                 className: "text-red-500 text-sm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 119,
+                                                                lineNumber: 124,
                                                                 columnNumber: 29
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                            lineNumber: 110,
+                                                            lineNumber: 115,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                        lineNumber: 109,
+                                                        lineNumber: 114,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1993,23 +1997,23 @@ const UploadProduct = ()=>{
                                                                 className: "text-red-500 text-sm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 138,
+                                                                lineNumber: 143,
                                                                 columnNumber: 29
                                                             }, void 0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                            lineNumber: 128,
+                                                            lineNumber: 133,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                        lineNumber: 127,
+                                                        lineNumber: 132,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 113,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextareaAutosize$2f$TextareaAutosize$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextareaAutosize$3e$__["TextareaAutosize"], {
@@ -2019,7 +2023,7 @@ const UploadProduct = ()=>{
                                                 className: "mb-4 w-full h-[150px] p-4 rounded-md border bg-transparent placeholder:text-[#424242cc] border-[#adadadcc]"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 148,
+                                                lineNumber: 153,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -2035,7 +2039,7 @@ const UploadProduct = ()=>{
                                                 className: "mb-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 155,
+                                                lineNumber: 160,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$formik__$5b$external$5d$__$28$formik$2c$__cjs$29$__["ErrorMessage"], {
@@ -2044,7 +2048,7 @@ const UploadProduct = ()=>{
                                                 className: "text-red-500 text-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 169,
+                                                lineNumber: 174,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -2065,7 +2069,7 @@ const UploadProduct = ()=>{
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 184,
+                                                                lineNumber: 189,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -2077,24 +2081,24 @@ const UploadProduct = ()=>{
                                                                 children: "Remove"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                                lineNumber: 193,
+                                                                lineNumber: 198,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, file.name, true, {
                                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                        lineNumber: 177,
+                                                        lineNumber: 182,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                                lineNumber: 175,
+                                                lineNumber: 180,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 112,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -2106,38 +2110,38 @@ const UploadProduct = ()=>{
                                         children: "Upload Product"
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                                        lineNumber: 210,
+                                        lineNumber: 215,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                                lineNumber: 97,
+                                lineNumber: 102,
                                 columnNumber: 17
                             }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/uploadproduct.tsx",
-                        lineNumber: 95,
+                        lineNumber: 100,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/pages/uploadproduct.tsx",
-                    lineNumber: 94,
+                    lineNumber: 99,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/pages/uploadproduct.tsx",
-                lineNumber: 93,
+                lineNumber: 98,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/pages/uploadproduct.tsx",
-            lineNumber: 92,
+            lineNumber: 97,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/pages/uploadproduct.tsx",
-        lineNumber: 91,
+        lineNumber: 96,
         columnNumber: 5
     }, this);
 };

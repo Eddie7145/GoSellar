@@ -42,22 +42,28 @@ const Header: React.FC = () => {
     setAnchorEl(null);
   };
 
-  const handleSearchSubmit = async (event: React.FormEvent) => {
+  // const handleSearchSubmit = async (event: React.FormEvent) => {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:9000/api/product/search?query=${searchQuery}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Search failed");
+  //     }
+  //     const data = await response.json();
+  //     setSearchResults(data.data); // Assuming the response structure contains data
+  //     console.log("Search results:", data.data);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
+  const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      const response = await fetch(
-        `http://localhost:9000/api/product/search?query=${searchQuery}`
-      );
-      if (!response.ok) {
-        throw new Error("Search failed");
-      }
-      const data = await response.json();
-      setSearchResults(data.data); // Assuming the response structure contains data
-      console.log("Search results:", data.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    router.push(`/products?search=${encodeURIComponent(searchQuery)}`);
   };
+  
 
   return (
     <Box className="bg-white shadow-md">

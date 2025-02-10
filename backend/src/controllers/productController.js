@@ -12,16 +12,6 @@ const upload = multer({ storage }).array("images", 5); // Allow up to 5 images
 // @desc Create a new product
 // @router /api/product/
 // @access Private
-// import expressAsyncHandler from "express-async-handler";
-// import { Product } from "../models/productModel.js";
-// import { AppError } from "../middlewares/errorHandler.js";
-// import multer from "multer";
-// import { v2 as cloudinary } from "cloudinary"; // ✅ Import Cloudinary
-
-// ✅ Define Multer Middleware (outside the handler)
-// const storage = multer.memoryStorage();
-// export const upload = multer({ storage }).array("images", 5); // Allow up to 5 images
-
 // ✅ Product Creation Handler
 export const createProduct = expressAsyncHandler(async (req, res) => {
   try {
@@ -54,7 +44,7 @@ export const createProduct = expressAsyncHandler(async (req, res) => {
 });
 
 // @desc Get all products
-// @router /api/product/
+// @router /api/product/all
 // @access Public
 export const getAllProducts = expressAsyncHandler(async (req, res) => {
   try {
@@ -66,7 +56,7 @@ export const getAllProducts = expressAsyncHandler(async (req, res) => {
 });
 
 // @desc Get products based on vendor
-// @router /api/product/:id
+// @router /api/product?vendor=id
 // @access Public
 export const getProductsByVendor = async (req, res) => {
   const { vendorId } = req.query;
@@ -101,12 +91,15 @@ export const getAProductBySlug = expressAsyncHandler(async (req, res) => {
 export const searchProducts = expressAsyncHandler(async (req, res) => {
   const { query } = req.query;
   try {
+    console.log('about to fetch products that contains' , query)
     const products = await Product.find({
       $or: [
         { name: { $regex: query, $options: "i" } },
         { description: { $regex: query, $options: "i" } },
       ],
     });
+    
+    console.log('Prodct found', products)
     res.status(200).json({ status: true, data: products });
   } catch (error) {
     throw new AppError(error.message || "Failed to search products", 400);

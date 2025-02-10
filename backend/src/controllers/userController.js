@@ -9,7 +9,15 @@ import { AppError } from "../middlewares/errorHandler.js";
 // @access Public
 
 export const registerUser = expressAsyncHandler(async (req, res) => {
-  const { name, email, password, phone, userType, storeName, storeDescription } = req.body;
+  const {
+    name,
+    email,
+    password,
+    phone,
+    userType,
+    storeName,
+    storeDescription,
+  } = req.body;
 
   // Validate required fields
   if (!name || !email || !password || !phone || !userType) {
@@ -23,7 +31,10 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
 
   // Validate storeName and storeDescription for farmers
   if (userType === "farmer" && (!storeName || !storeDescription)) {
-    throw new AppError("Store name and description are required for farmers", 400);
+    throw new AppError(
+      "Store name and description are required for farmers",
+      400
+    );
   }
 
   // Check if user already exists
@@ -65,15 +76,15 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
 // @access Public
 export const loginUser = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  
+
   try {
     const user = await User.findOne({ email });
     console.log("Login attempt for:", email);
-    
+
     if (!user) {
       return res.status(401).json({
         status: false,
-        message: "Invalid Email or Password"
+        message: "Invalid Email or Password",
       });
     }
 
@@ -84,7 +95,7 @@ export const loginUser = expressAsyncHandler(async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({
         status: false,
-        message: "Invalid Email or Password"
+        message: "Invalid Email or Password",
       });
     }
 
@@ -100,7 +111,7 @@ export const loginUser = expressAsyncHandler(async (req, res) => {
     res.status(500).json({
       status: false,
       message: "Server error during login",
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -121,6 +132,8 @@ export const profile = expressAsyncHandler(async (req, res) => {
       email: user.email,
       role: user.role,
       phone: user.phone,
+      storeName: user.storeName,
+      storeDescription: user.storeDescription,
       isActive: user.isActive,
     });
   } else {
@@ -179,10 +192,10 @@ export const getAllProfile = expressAsyncHandler(async (req, res) => {
 // @access Private
 
 export const deleteUserProfile = expressAsyncHandler(async (req, res) => {
-    try{
-        await User.findByIdAndDelete(req.params.id);
-        res.json({message: "User Removed!"})
-    } catch(error){
-        throw new AppError("User Not Found");
-    }
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ message: "User Removed!" });
+  } catch (error) {
+    throw new AppError("User Not Found");
+  }
 });

@@ -13,9 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsSortDown } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useRouter } from "next/router";
 
 function valueText(value: number) {
   return `${value}`;
@@ -24,6 +25,40 @@ const products: React.FC = () => {
   const [categoryAnchorEl, setCategoryAnchorEl] = useState<null | HTMLElement>(
     null
   );
+
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+
+  const router = useRouter();
+  const { search } = router.query;
+  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const url = search
+          ? `http://localhost:9000/api/product/search?query=${encodeURIComponent(search as string)}`
+          : "http://localhost:9000/api/product/all";
+  
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log('response' ,response)
+        console.log('data' ,data)
+  
+        if (data.status) {
+          setProducts(data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchProducts();
+  }, [search]); // Re-run when `search` changes
+  
+
   const handleCategoryClick = (event: React.MouseEvent<HTMLElement>) => {
     setCategoryAnchorEl(event.currentTarget);
   };
@@ -177,120 +212,77 @@ const products: React.FC = () => {
                   <Box>
                     <h5 className="font-bold">Categories</h5>
                     <div className="mt-4">
-                        <Link className="flex justify-between items-center" href={"#"}>Fruits & Vegetables <MdKeyboardArrowRight className="text-[20px]"/></Link>
+                      <Link
+                        className="flex justify-between items-center"
+                        href={"#"}
+                      >
+                        Fruits & Vegetables{" "}
+                        <MdKeyboardArrowRight className="text-[20px]" />
+                      </Link>
                     </div>
                   </Box>
                   <Box>
                     <h5 className="font-bold">Ratings</h5>
                     <div className="mt-4 flex flex-col gap-3">
-                        <Link className="flex justify-between items-center" href={"#"}><Rating name="read-only" value={5} readOnly /></Link>
-                        <Link className="flex justify-between items-center" href={"#"}><Rating name="read-only" value={4} readOnly /></Link>
-                        <Link className="flex justify-between items-center" href={"#"}><Rating name="read-only" value={3} readOnly /></Link>
-                        <Link className="flex justify-between items-center" href={"#"}><Rating name="read-only" value={2} readOnly /></Link>
-                        <Link className="flex justify-between items-center" href={"#"}><Rating name="read-only" value={1} readOnly /></Link>
+                      <Link
+                        className="flex justify-between items-center"
+                        href={"#"}
+                      >
+                        <Rating name="read-only" value={5} readOnly />
+                      </Link>
+                      <Link
+                        className="flex justify-between items-center"
+                        href={"#"}
+                      >
+                        <Rating name="read-only" value={4} readOnly />
+                      </Link>
+                      <Link
+                        className="flex justify-between items-center"
+                        href={"#"}
+                      >
+                        <Rating name="read-only" value={3} readOnly />
+                      </Link>
+                      <Link
+                        className="flex justify-between items-center"
+                        href={"#"}
+                      >
+                        <Rating name="read-only" value={2} readOnly />
+                      </Link>
+                      <Link
+                        className="flex justify-between items-center"
+                        href={"#"}
+                      >
+                        <Rating name="read-only" value={1} readOnly />
+                      </Link>
                     </div>
                   </Box>
                 </Box>
               </Grid>
+
               <Grid item xs={9}>
-                <Grid container spacing={3}>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
+                {loading ? (
+                  <Typography>Loading products...</Typography>
+                ) : products?.length === 0 ? (
+                  <Typography>No products found.</Typography>
+                ) : (
+                  <Grid container spacing={3} wrap="wrap">
+                    {products?.map((product) => (
+                      <Grid key={product._id} item xs={12} sm={6} md={4} lg={3}>
+                        <ProductCard
+                          imageUrl={product.image[0] || "default-image.png"}
+                          discount={product.discount || "0%"}
+                          productName={product.name}
+                          brand={product.brand || "Unknown Brand"}
+                          originalPrice={`$${product.price}`}
+                          discountedPrice={`$${product.price}`}
+                          rating={product.rating || 0}
+                          reviewCount={product.reviewCount || 0}
+                          slug={product.slug}
+                        />
+                      </Grid>
+                    ))}
                   </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ProductCard
-                      imageUrl={"images 2.png"}
-                      discount={"15%"}
-                      productName={"Basket of Pepper"}
-                      brand={"StarStar Shop"}
-                      originalPrice={"$50.00"}
-                      discountedPrice={"$37.00"}
-                      rating={5}
-                      reviewCount={4}
-                    />
-                  </Grid>
-                </Grid>
+                )}
               </Grid>
             </Grid>
           </Box>
